@@ -1,0 +1,11 @@
+.container-navbar{    
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    max-width: 98vw;
+}
+.section-navbar{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}

@@ -1,0 +1,28 @@
+.container-section1-card{
+    position: relative;
+    width: 250px;
+    height: 250px;
+}
+.img-card{
+    position: relative;
+    width: 250px;
+    height: 226px;
+}
+.container-section1-icons-card{    
+    position: absolute;
+    right: 0;
+    padding-right: 15px;
+    padding-top: 5px;
+}
+.text-section1-card{    
+    text-align: center;
+    background: black;
+    color: white;
+}
+.container-section2-card{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
