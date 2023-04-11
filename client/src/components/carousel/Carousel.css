@@ -13,10 +13,36 @@
 .buttonRight-carousel{
     position: absolute;
     z-index: 10;
-    left: 0;
+    left: 5px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    transition: all 1s;
+}
+.buttonRight-carousel:hover{
+    left: 0px;
+}
+.buttonRight-carousel:hover,
+.buttonRight-carousel:focus,
+.buttonRight-carousel:active {
+    outline:0;
+    border: none;
 }
 .buttonLeft-carousel{
     position: absolute;
     z-index: 10;
-    right: 0;
+    right: 5px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    transition: all 1s;
+}
+.buttonLeft-carousel:hover{
+    right:0px;
+}
+.buttonLeft-carousel:hover,
+.buttonLeft-carousel:focus,
+.buttonLeft-carousel:active {
+    outline:0;
+    border: none;
 }

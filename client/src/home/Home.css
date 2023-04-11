@@ -1,6 +1,57 @@
 .grid-container-cards{   
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
-    gap: 10px;
-    justify-content: space-around;
+    grid-template-columns: repeat(auto-fit, minmax(326px, 326px));
+    gap: 30px;
+    justify-content: space-between;
+}
+.ventaporcaja-home{    
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px;
+gap: 10px;
+height: 49px;
+background: #0E0E11;
+}
+.ventaporcaja-letra-home{
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 300;
+font-size: 22px;
+line-height: 33px;
+text-align: center;
+letter-spacing: 0.16em;
+color: #FFFFFF;
+}
+.vinos-text-home{    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 800;
+font-size: 48px;
+line-height: 56px;
+color: #C64940;
+}
+.destacados-text-home{    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 800;
+font-size: 48px;
+line-height: 56px;
+margin: 15px 25px;
+color: #145f7a;
+margin-top: 0;
+}
+.section-destacados-home{    
+    margin-top: 10px;
+    padding: 5px 0px 25px 0px;
+    position: relative;
+    width: 95vw;
+    padding-bottom: 25px;
+    background-image: url("./backgroundDestacados.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 95vw;
+    margin: auto;
+    margin-top: 30px;
 }

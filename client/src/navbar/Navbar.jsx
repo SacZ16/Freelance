@@ -1,20 +1,23 @@
 import "./Navbar.css"
-
+import logo from "../assets/logo.svg"
+import profile from "./profile.svg"
+import car from "./car.svg"
+import help from "./help.svg"
 export default function Navbar() {
   return (
     <main className="container-navbar">
-        <h1>pmn</h1>
+        <img src={logo} alt="pmn"/>
         <section className="section-navbar">
-            <p>VINOS</p>
-            <p>ESPUMANTES</p>
-            <p>DESTILADOS</p>
-            <p>ESPECIALES</p>
-            <p>GIFT CARD</p>
+            <p className="h4-navbar">VINOS</p>
+            <p className="h4-navbar">ESPUMANTES</p>
+            <p className="h4-navbar">DESTILADOS</p>
+            <p className="h4-navbar">ESPECIALES</p>
+            <p className="h4-navbar">GIFT CARD</p>
         </section>
         <section className="section-navbar">
-            <h1>P</h1>
-            <h1>C</h1>
-            <h1>A</h1>
+            <img src={profile} alt="profile"/>
+            <img src={car} alt="car"/>
+            <img src={help} alt="help"/>
         </section>
     </main>
   )

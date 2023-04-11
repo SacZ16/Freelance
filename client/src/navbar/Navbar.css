@@ -1,11 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;800&display=swap');
 .container-navbar{    
     display: flex;
-    width: 100vw;
     justify-content: space-around;
-    max-width: 98vw;
+    width: 99vw;
 }
 .section-navbar{
     display: flex;
     gap: 1.5rem;
     align-items: center;
+}
+
+.h4-navbar{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1em;    
+    color: #000000;
 }

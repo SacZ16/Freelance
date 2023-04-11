@@ -2,29 +2,32 @@ import Card from "../components/card/Card";
 import Carousel from "../components/carousel/Carousel";
 import DetailEnvios from "../components/detailEnvios/DetailEnvios";
 import Navbar from "../navbar/Navbar";
+import vinos from "./vinos.svg"
 import "./Home.css";
 
 export default function Home() {
   return (
     <main>
-      <div style={{background:'black',textAlign:'center',color:'white'}}>VENTA POR CAJA </div>
+      <div className="ventaporcaja-home">
+       <p className="ventaporcaja-letra-home">VENTA POR CAJA EXCLUSIVAMENTE</p>
+        </div>
       <Navbar />
-      <Carousel width={"90vw"} height={"30vh"} />
-      <DetailEnvios />
-      <section style={{display:'flex',gap:'15px'}}>
-        <div style={{width:'100%',height:'20vh',background:'black'}}></div>
-        <div style={{width:'100%',height:'20vh',background:'black'}}></div>
+      <Carousel width={"90vw"} height={"50vh"} />
+      <DetailEnvios  width={"90vw"}/>
+      <section style={{display:'flex',gap:'15px',justifyContent:'center'}}>
+        <img src={vinos} alt="vinos"/>
+        <img src={vinos} alt="vinos"/>
       </section>
-      <section style={{ padding: "0px 20px" }}>
-        <h3>VINOS</h3>
+      <section style={{ padding: "0px 20px",maxWidth:'95vw',margin:'auto' }}>
+        <h3 className="vinos-text-home">VINOS</h3>
         <section className="grid-container-cards">
           {[1, 2, 3, 4].map((producto, index) => {
             return <Card />;
           })}
         </section>
       </section>
-      <section style={{ padding: "0px 20px" }}>
-        <h3>DESTACADOS</h3>
+      <section className="section-destacados-home">
+        <h3 className="destacados-text-home">DESTACADOS</h3>
         <section className="grid-container-cards">
           {[1, 2, 3, 4].map((producto, index) => {
             return <Card />;

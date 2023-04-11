@@ -1,28 +1,98 @@
 .container-section1-card{
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 326px;
+    height: 326px;
 }
 .img-card{
     position: relative;
-    width: 250px;
-    height: 226px;
+    width: 326px;
+    height: 326px;
 }
 .container-section1-icons-card{    
     position: absolute;
     right: 0;
-    padding-right: 15px;
-    padding-top: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
 }
 .text-section1-card{    
     text-align: center;
-    background: black;
+    background: #0E0E11;
     color: white;
+    padding: 8px 0px;
+    width: 326px;
 }
 .container-section2-card{
-    width: 250px;
-    height: 250px;
+    width: 326px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.titulo-card{
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+color: #FFFFFF;
+margin: 0;
+}
+.text2-section1-card{
+    padding: 0px 15%;
+    text-align: center;
+}
+.titulo2-card{    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 24px;
+text-align: center;
+letter-spacing: 0.2em;
+margin: 0;
+color: #000000;
+}
+.precio-card{    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 32px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.1em;
+color: #000000;
+margin: 0;
+}
+.texto-rojo-card{    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+color: #C64940;
+margin: 0;
+}
+.texto-blue-card{    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 16px;
+text-align: center;
+color:#197799;
+margin: 0;
+}
+.contenedor-detalle-card{    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0px;
+    width: 326px;
 }
