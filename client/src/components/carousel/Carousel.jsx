@@ -4,7 +4,7 @@ import leftArrow from "./leftArrow.svg"
 import rightArrow from "./rightArrow.svg"
 import "./Carousel.css"
 
-export default function Carousel({width,height}) {
+export default function Carousel({width,height,fix}) {
     const fondos =["red","blue","yellow"]
     const [indexCarousel, setindexCarousel] = useState(0)
 
@@ -15,7 +15,7 @@ export default function Carousel({width,height}) {
             {fondos.map((image,i)=>{
                 return(
                     <div className="container2-carousel" style={{width:width,height:height,left:`${indexCarousel+i}00%`}}>
-                        <img style={{objectFit:'cover',width:width,height:height}} src={mock} alt="mock"/>
+                        <img style={{objectFit:`${fix?'cover':'contain'}`,width:width,height:height}} src={mock} alt="mock"/>
                     </div>
                 )
             })}

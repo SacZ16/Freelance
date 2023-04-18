@@ -1,0 +1,151 @@
+.ventaporcaja-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 10px;
+    height: 49px;
+    background: #0E0E11;
+}
+
+.ventaporcaja-letra-detail {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.16em;
+    color: #FFFFFF;
+}
+
+.title-detail {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: #525252;
+}
+
+.precio-detail {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #197799;
+}
+
+.subtitle-detail {
+    color: #525252;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.caracteristicas-detail {
+    color: #525252;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.li-detail {
+    color: #525252;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.section-detail {
+    display: flex;
+    align-items: center;
+}
+
+.span-opiniones-detail {
+    color: #525252;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 20px;
+}
+.section-contador-stock-detail{
+    display: flex;
+    margin: 20px 0px;
+}
+.section-contador-stock-detail button{
+    border: 1px solid #B8B4B4;
+    background-color: #FFFFFF;
+    color: #0E0E11;
+    padding: 6px 0px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23px;
+}
+.section-contador-stock-detail span{
+    border-bottom: 1px solid #B8B4B4;
+    border-top: 1px solid #B8B4B4;
+    padding: 5px 15px;
+}
+
+.comprar-detail{
+    color: #FFFFFF;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 24px;
+margin: 20px 0px;
+border-radius: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #197799;
+}
+.recomendado-detail{
+    color: #197799;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 800;
+font-size: 48px;
+line-height: 56px;
+padding-left: 20px;
+}
+.grid-container-cards{   
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(326px, 326px));
+    gap: 30px;
+    justify-content: space-between;
+}
+.section-detalle-op-detail{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #B8B4B4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.section-detalle-op-detail span{
+    position: absolute;
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

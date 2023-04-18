@@ -1,0 +1,101 @@
+.ventaporcaja-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 10px;
+    height: 49px;
+    background: #0E0E11;
+}
+
+.ventaporcaja-letra-login {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 33px;
+    text-align: center;
+    letter-spacing: 0.16em;
+    color: #FFFFFF;
+}
+
+.fondo-login-sub-login {
+    width: 100%;
+    height: calc(100vh - 145px);
+    background-image: url("./fondo.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-contenedor-login {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 23px;
+    width: 320px;
+    height: 464px;
+    position: relative  ;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+.login2-contenedor-login {
+    background: transparent;
+    border-radius: 23px;
+    width: 340px;
+    height: 484px;
+    position: absolute;
+    border: 2px white solid;
+    margin-top: 55px;
+    margin-left: 55px;
+    z-index: 2;
+}
+
+.input-login-login{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 33px;
+    padding: 5px 15px;
+    letter-spacing: 0.16em;
+    color: black;
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 7px 8px 20px 0px rgba(0, 0, 0, 0.1);
+}
+.buton-login-login{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 33px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #1c84a4;
+    border-radius: 15px;
+    padding: 10px 0px;
+}
+.span-login-lolgin{    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 33px;
+    text-align: center;
+}
+.span2-login-lolgin{    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 33px;
+    text-align: center;
+    color: #ffb37a;
+    cursor: pointer;
+}
