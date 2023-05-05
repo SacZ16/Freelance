@@ -15,9 +15,11 @@ export default function Home() {
        <p className="ventaporcaja-letra-home">VENTA POR CAJA EXCLUSIVAMENTE</p>
         </div>
       <Navbar />
-      <Carousel width={"90vw"} height={"50vh"} fix={true}/>
+      <Carousel width={"90vw"} height={"50vh"} fix={false}/>
+      <div className="detailenvios-media-home">
       <DetailEnvios  width={"90vw"}/>
-      <section style={{display:'flex',gap:'15px',justifyContent:'center'}}>
+      </div>
+      <section className="section1-media-home" style={{display:'flex',gap:'15px',justifyContent:'center'}}>
         <img src={vinos} alt="vinos"/>
         <img src={vinos} alt="vinos"/>
       </section>
@@ -70,7 +72,9 @@ export default function Home() {
         <div className="div-ig-home"></div>
         </section>
       </section>
+      <div className="detailenvios-media-home">
       <Footer2></Footer2>
+      </div>
     </main>
   );
 }

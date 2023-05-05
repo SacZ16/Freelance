@@ -4,6 +4,8 @@ import './App.css'
 import Home from "./home/Home";
 import Login from "./Login/Login";
 import Detail from "./detail/Detail";
+import Login2 from "./Login/Login2";
+import Compra from "./compra/Compra";
 
 function App() {
 
@@ -11,8 +13,10 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/registro" element={<Login/>}/>
+      <Route path="/login" element={<Login2/>}/>
       <Route path="/detalle/:id" element={<Detail/>}/>
+      <Route path="/cpm" element={<Compra/>}/>
     </Routes>
     </BrowserRouter>
   )

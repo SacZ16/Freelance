@@ -261,3 +261,20 @@ font-size: 17px;
 line-height: 20px;
 color: white;
 }
+.detailenvios-media-home{
+    display: flex;
+}
+.section1-media-home{
+    display: initial;
+}
+@media (max-width: 600px){
+    .ventaporcaja-letra-home{
+        font-size: 16px;
+    }
+    .detailenvios-media-home{
+        display: none;
+    }
+    .section1-media-home{
+        display: none !important;
+    }
+}

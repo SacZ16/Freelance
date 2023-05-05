@@ -5,9 +5,10 @@ import car from "./car.svg"
 import help from "./help.svg"
 export default function Navbar() {
   return (
+    <div>
     <main className="container-navbar">
         <img src={logo} alt="pmn"/>
-        <section className="section-navbar">
+        <section className="section-navbar1">
             <p className="h4-navbar">VINOS</p>
             <p className="h4-navbar">ESPUMANTES</p>
             <p className="h4-navbar">DESTILADOS</p>
@@ -20,5 +21,13 @@ export default function Navbar() {
             <img src={help} alt="help"/>
         </section>
     </main>
+        <section className="section-navbar2">
+            <p className="h4-navbar">VINOS</p>
+            <p className="h4-navbar">ESPUMANTES</p>
+            <p className="h4-navbar">DESTILADOS</p>
+            <p className="h4-navbar">ESPECIALES</p>
+            <p className="h4-navbar">GIFT CARD</p>
+        </section>
+    </div>
   )
 }

@@ -5,8 +5,8 @@ const morgan =require( "morgan");
 const dotenv=require("dotenv")
 const indexRouter = require("./src/indexRouter")
 dotenv.config()
-// import { connectDB } from "./src/db/mongodb.js";
-// connectDB();
+const connectDB  =require("./src/db/mongodb.js");
+connectDB();
 const app = express();
 const server = http.createServer(app);
 app.use(cors());

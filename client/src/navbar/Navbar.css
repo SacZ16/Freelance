@@ -4,8 +4,18 @@
     justify-content: space-around;
     width: 99vw;
 }
+.section-navbar1{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
 .section-navbar{
     display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+.section-navbar2{
+    display: none;
     gap: 1.5rem;
     align-items: center;
 }
@@ -21,4 +31,20 @@
     text-align: center;
     letter-spacing: 0.1em;    
     color: #000000;
+}
+@media (max-width: 600px){
+    .section-navbar1{
+        display: none;
+    }
+    .section-navbar2{
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 10px;
+        flex-wrap: wrap;
+        width: 90vw;
+        gap: 10px;
+    }
+    .section-navbar2 .h4-navbar{
+        font-size: 20px;
+    }
 }
