@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isadmin: {
+  isAdmin: {
     type: String,
     required: true,
   },
@@ -20,6 +20,8 @@ const userSchema = new mongoose.Schema({
       type: Object,
     },
   ],
+  carrito: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+  favoritos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 });
 
 module.exports = mongoose.model("User", userSchema);

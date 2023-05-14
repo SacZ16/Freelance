@@ -10,9 +10,12 @@ const PaymentInstance = new PaymentController(new PaymentService());
 const {compare,encrypt, tokenSign} =require("./Controllers/helpers");
 
 
-
 const User = require("./models/User");
 const { deleteProduct, getProduct, getProducts, postProduct, updateProduct } = require("./Controllers/productController");
+const { addProductToCart, removeFromCart } = require("./Controllers/cartControllers");
+const { getCategories, postCategory, updateCategory, deleteCategory } = require("./Controllers/categoriaController");
+const { addProductToFav, removeFromFav } = require("./Controllers/favControllers");
+const { registerUser, loginUser, getUsers, getUser } = require("./Controllers/userControllers");
 router.get("/", function (req, res, next) {
   return res.json({
     "/payment": "generates a payment link",
@@ -25,51 +28,27 @@ router.get("/payment", function (req, res, next) {
 });
 
 
-router.post("/user",async function(req,res){
-  try {
-    const { username, password, email } = req.body
-    const user = await User.findOne({ email });
-    if (user) {
-      return res.status(405).json({ msg: "Usario con mismo email" });
-    }
-    const passwordHash = await encrypt(password)
-    await User.create({
-        username: username,
-        password: passwordHash,
-        email: email
-    })
-    return res.status(200).json("Usuario creado satisfactoriamente")
-} catch (e) {
-    console.log(req.body)
-    console.log("e",e)
-    return res.status(400).json({ msg: `Error - ${e}` })
-}
-})
-
-
-router.post("/login",async function (req,res){
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(405).json({ msg: "Usario no encontrado" });
-    }
-    const checkPassword = await compare(password, user.password);
-    const tokenSession = await tokenSign(user);
-    if (!checkPassword) {
-      return res.status(401).json({ msg: "Contraseña invalida" });
-    }
-    return res.status(200).send(tokenSession);
-  } catch (e) {
-    return res.json({ msg: `Error - ${e}` });
-  }
-})
+router.get("/users", getUsers)
+router.get("/user/:id", getUser)
+router.post("/user/register", registerUser)
+router.post("/user/login", loginUser)
 
 router.get("/products", getProducts)
 router.get("/product/:id", getProduct)
 router.post("/product/add",postProduct)
 router.put("/product/update/:id", updateProduct)
 router.delete("/product/delete/:id",deleteProduct)
+
+router.post("/cart/add", addProductToCart)
+router.put("/cart/remove", removeFromCart)
+
+router.post("/fav/add", addProductToFav)
+router.put("/fav/remove", removeFromFav)
+
+router.get("/categories", getCategories)
+router.post("/categories/add", postCategory)
+router.put("/category/update/:id", updateCategory)
+router.delete("/category/delete/:id", deleteCategory)
 
 router.post("/process_payment",function(req,res){
   mercadopago.configurations.setAccessToken("TEST-97172942281878-043019-3f4d6d2005fe2ab127f2338b10e40ce7-320615701");
@@ -94,5 +73,48 @@ router.post("/process_payment2",function(req,res){
     }
 });
 })
+
+/* export const updateUser = async (req, res) => {
+  const { id } = req.params;
+  const { username, password, email, compras } =
+    req.body;
+
+  try {
+    const userBD = await User.findOne({ email });
+    if (userBD) return res.json({ msg: 'The email already exists' });
+    const usernameBD = await User.findOne({ username });
+    if (usernameBD) return res.json({ msg: 'The username already exists' });
+
+    if (!password) {
+      const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+      if (!updatedUser) return res.json({ msg: 'The user was not found' });
+      return res.json({ msg: 'User Updated' });
+    } else {
+      const passwordHash = await encrypt(password);
+
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        {
+          username: username,
+          password: passwordHash,
+          email: email,
+          phoneNumber: phoneNumber,
+          address: address,
+          location: location,
+          zipCode: zipCode,
+        },
+        {
+          new: true,
+        }
+      );
+
+      return res.json({ msg: 'User Updated' });
+    }
+  } catch (e) {
+    return res.json({ msg: `Error 404 - ${e}` });
+  }
+}; */
 
 module.exports = router
