@@ -17,10 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/",indexRouter)
-app.use("/products", getProducts)
-app.use("/product/:id", getProduct)
-app.use("/product/add",postProduct)
-app.use("/product/update/:id", updateProduct)
 
 server.listen(8080, () => {
     console.log(`Server on port 8080`);
