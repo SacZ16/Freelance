@@ -6,6 +6,7 @@ import Login from "./Login/Login";
 import Detail from "./detail/Detail";
 import Login2 from "./Login/Login2";
 import Compra from "./compra/Compra";
+import Filtro from "./filtro/Filtro";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home/>}/>
+      <Route path="/:filtro" element={<Filtro/>}/>
       <Route path="/registro" element={<Login/>}/>
       <Route path="/login" element={<Login2/>}/>
       <Route path="/detalle/:id" element={<Detail/>}/>
