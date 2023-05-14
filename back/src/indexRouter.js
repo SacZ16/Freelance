@@ -12,6 +12,7 @@ const {compare,encrypt, tokenSign} =require("./Controllers/helpers");
 
 
 const User = require("./models/User");
+const { deleteProduct } = require("./Controllers/productController");
 router.get("/", function (req, res, next) {
   return res.json({
     "/payment": "generates a payment link",
@@ -63,6 +64,11 @@ router.post("/login",async function (req,res){
     return res.json({ msg: `Error - ${e}` });
   }
 })
+
+
+///
+router.delete(("/product/:id"),deleteProduct)
+///
 
 router.post("/process_payment",function(req,res){
   mercadopago.configurations.setAccessToken("TEST-97172942281878-043019-3f4d6d2005fe2ab127f2338b10e40ce7-320615701");

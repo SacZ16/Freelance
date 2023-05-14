@@ -9,6 +9,7 @@ dotenv.config()
 const connectDB  =require("./src/db/mongodb.js");
 connectDB();
 const app = express();
+const router = express.Router();
 const server = http.createServer(app);
 app.use(cors());
 app.use(morgan("dev"));
@@ -19,7 +20,6 @@ app.use("/",indexRouter)
 app.use("/products", getProducts)
 app.use("/product/:id", getProduct)
 app.use("/product/add",postProduct)
-app.use("/product/delete/:id", deleteProduct)
 app.use("/product/update/:id", updateProduct)
 
 server.listen(8080, () => {
