@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import AdminSubirProducto from './AdminSubirProducto'
+import AdminCompras from "./AdminCompras";
+import AdminCategorias from "./AdminCategorias";
+import AdminConfigurarInicio from "./AdminConfigurarInicio";
+import AdminVerProductos from "./AdminVerProductos";
 import "./Perfil.css"
 
 export default function Admin({ usuario }) {
-    const [show, setShow] = useState("compras");
-  return (
+    const [show, setShow] = useState("compras");  return (
     <div
     style={{
       border: "1px solid black",
@@ -41,9 +44,10 @@ export default function Admin({ usuario }) {
       <div style={{display:'flex',justifyContent:'space-evenly',width:'100%',marginTop:'15px'}}>
       <div style={{ display: "flex", gap: "3rem",display:'flex',flexWrap:'wrap' }}>
         <button onClick={() => setShow("compras")} className="letra-perfil">Compras</button>
-        <button onClick={() => setShow("compras")} className="letra-perfil">Categorias</button>
-        <button onClick={() => setShow("compras")} className="letra-perfil">Configurar Inicio</button>
-        <button onClick={() => setShow("compras")} className="letra-perfil">Subir Productos</button>
+        <button onClick={() => setShow("categorias")} className="letra-perfil">Categorias</button>
+        <button onClick={() => setShow("inicio")} className="letra-perfil">Configurar Inicio</button>
+        <button onClick={() => setShow("productos")} className="letra-perfil">Subir Productos</button>
+        <button onClick={() => setShow("verproductos")} className="letra-perfil">Ver Productos</button>
       </div>
       </div>
     </div>
@@ -51,31 +55,23 @@ export default function Admin({ usuario }) {
     <hr></hr>
     <br></br>
     <div>
-      {show === "compras" ? (
-        <div>
-          {usuario.compras.length > 0 ? (
-            usuario.compras.map((e) => {
-              return <div></div>;
-            })
-          ) : (
-            // <span  className="letra-perfil" style={{color:'black'}}>No hay compras</span>
-      <div>
-        hola :()
-        <AdminSubirProducto></AdminSubirProducto>
-      </div>
-          )}
-        </div>
-      ) : (
-        <div>
-          {usuario.favoritos.length > 0 ? (
-            usuario.favoritos.map((e) => {
-              return <div></div>;
-            })
-          ) : (
-            <span className="letra-perfil" style={{color:'black'}}>No hay favoritos</span>
-          )}
-        </div>
-      )}
+    {show ==="compras"?
+   <AdminCompras></AdminCompras>
+   :
+   show==="categorias"?
+   <AdminCategorias></AdminCategorias>
+   :
+   show==="inicio"?
+   <AdminConfigurarInicio></AdminConfigurarInicio>  
+   :
+      show==="productos"?
+      <AdminSubirProducto></AdminSubirProducto>
+      :
+      show==="verproductos"?
+      <AdminVerProductos></AdminVerProductos>
+      :
+   <AdminCompras></AdminCompras>
+  }
     </div>
   </div>
   )

@@ -35,16 +35,17 @@ const getCategories = async (req, res) => {
   };
 
   const updateCategory = async (req, res) => {
-    const { id } = req.params;
+    const { id, nombre } = req.body;
   
     try {
-      const updateCategory = await Category.findByIdAndUpdate(id, req.body, {
+      const updateCategory = await Category.findByIdAndUpdate(id, {nombre : nombre}, {
         new: true,
       });
-      if (!updateCategory) return res.json({ msg: "Category not found" });
-      return res.json({ msg: "Category Update" });
+      console.log(updateCategory)
+      if (!updateCategory) return res.status(406).json({ msg: "Category not found" });
+      return res.status(200).json({ msg: "Category Update" });
     } catch (e) {
-      return res.json({ msg: `Error 404 - ${e}` });
+      return res.status(405).json({ msg: `Error 404 - ${e}` });
     }
   };
 
