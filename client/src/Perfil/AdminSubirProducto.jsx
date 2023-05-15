@@ -98,9 +98,9 @@ export default function AdminSubirProducto() {
                   </div>
                 <div style={{padding:'20px'}}>
                     <div className='admin-subir-producto'>
-                  <section style={{marginRight:'5px',padding:'0px 10px'}}>
-               <label>Sube una imagen a la vez</label>
-        <input onChange={(e) => handleimage(e)} type={"file"}></input>
+                  <section style={{marginRight:'5px',padding:'0px 10px',height:'75px',width:'300px',overflow:'hidden'}}>
+               <label for="img">Sube una imagen a la vez</label>
+        <input id="img" onChange={(e) => handleimage(e)} type={"file"}></input>
                   </section>
                   <section>
                <label>Titulo del producto</label>
