@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import swal from 'sweetalert';
+import './Perfil.css'
 
 export default function AdminCategorias(){
 
@@ -85,8 +86,8 @@ export default function AdminCategorias(){
     }
 
       return (
-        <div>
-            <div>
+        <div className='categoria-perfil-admin'>
+            <div style={{display:'flex',gap:'10px'}}>
             <button onClick={()=>setShowC("lista")}>Lista de Categorias</button>
             <button onClick={()=>setShowC("agregar")}>Agregar nueva Categoria</button>
             </div>
@@ -97,21 +98,23 @@ export default function AdminCategorias(){
                             return(
                                 <div key={e._id}>
                                     <h3>{e.nombre}</h3>
+                                    <div style={{display:'flex',gap:'10px'}}>
                                     <button onClick={() => handleDelete(e._id)}>X</button>
                                     <button onClick={() => {setShowC("modificar"); setCategoria({id: e._id, nombre: e.nombre})}}>Modificar</button>
+                                    </div>
                                 </div>
                             )
                         })
                     }
                     </div>}
                     {showC === "agregar" && 
-                    <div>
+                    <div style={{display:'flex',gap:'10px',padding:'10px',alignItems:'center'}}>
                         <label>Nombre</label>
                         <input onChange={e => setNewCategory({nombre: e.target.value})} type='text' value={newCategory.nombre}></input>
                         <button onClick={() => onSumit()}>Nueva Categoria</button>
                     </div>}
                     {showC === "modificar" && 
-                    <div>
+                    <div style={{display:'flex',gap:'10px',padding:'10px',alignItems:'center'}}>
                         <label>Nuevo Nombre</label>
                         <input value={categoria.nombre} onChange={(e) => setCategoria({...categoria, nombre: e.target.value})}></input>
                         <button onClick={() => onPut()}>Guardar Cambios</button>
