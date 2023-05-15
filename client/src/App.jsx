@@ -6,6 +6,7 @@ import Detail from "./detail/Detail";
 import LoginPage from "./Login/LoginPage";
 import Compra from "./compra/Compra";
 import Filtro from "./filtro/Filtro";
+import Perfil from "./Perfil/Perfil";
 import RegisterPage from "./Login/RegisterPage";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/:filtro" element={<Filtro/>}/>
       <Route path="/registro" element={<RegisterPage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
+      <Route path="/perfil" element={<Perfil/>}/>
       <Route path="/detalle/:id" element={<Detail/>}/>
       <Route path="/cpm" element={<Compra/>}/>
     </Routes>

@@ -12,7 +12,7 @@ export default function Navbar() {
 
   const [userData, setUserData] = useState(localStorage.getItem("Upmn"));
 
-  const [ decodedToken ] = useJwt(localStorage.getItem('Upmn'))
+  const { decodedToken } = useJwt(localStorage.getItem('Upmn'))
 
   const optionGet = {
     method: "GET",
@@ -28,6 +28,7 @@ export default function Navbar() {
   useEffect(() => {
     fetch("http://localhost:8080/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
   }, [])
+  console.log(decodedToken)
   
   return (
     <div>
