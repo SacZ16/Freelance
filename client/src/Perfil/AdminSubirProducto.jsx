@@ -32,10 +32,28 @@ export default function AdminSubirProducto() {
         precio:0,
         valorunidad:0,
         unidades:0,
+        imagenes:"",
         categoria:"",
-        categorianame:"",
+        categorianame:"-",
         caracteristicas:""
     })
+    const onSumit =()=>{
+      let listoproducto= producto
+      listoproducto.caracteristicas=productocaracteristicas
+      listoproducto.imagenes=imagenes
+      console.log(JSON.stringify(listoproducto))
+      fetch("http://localhost:8080/product/add", {
+      method: "POST",
+      body: JSON.stringify(listoproducto),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization:`Barrer ${localStorage.getItem("Upmn")}`,
+      },
+    })
+
+    }
     const [imagenes, setImagenes] = useState([])
     const [loading,setLoading] = useState(true)
     const [categories,setCategories] = useState([])
@@ -57,7 +75,7 @@ export default function AdminSubirProducto() {
         console.log(file.secure_url)
         ima.push(file.secure_url)
         setImagenes(ima)
-        console.log(imagenes)
+        console.log({imagenes})
         setLoading(false)
       }, []);
   return (
@@ -78,9 +96,9 @@ export default function AdminSubirProducto() {
                }
                <label>Titulo del producto</label>
                <input onChange={e=>setProducto({...producto,titulo:e.target.value})} value={producto.titulo} type='text' name="titulo" ></input>
-               <label>Precio</label>
+               <label>Precio caja</label>
                <input onChange={e=>setProducto({...producto,precio:e.target.value})} value={producto.precio} type='text' name="precio" ></input>
-               <label>Unidades</label>
+               <label>Unidades por caja</label>
                <input onChange={e=>setProducto({...producto,unidades:e.target.value})} value={producto.unidades} type='text' name="unidades" ></input>
                <label>Valor por Unidad</label>
                <input onChange={e=>setProducto({...producto,valorunidad:e.target.value})} value={producto.valorunidad} type='text' name="valorunidad" ></input>
@@ -88,37 +106,35 @@ export default function AdminSubirProducto() {
                <input onChange={e=>setProducto({...producto,stock:e.target.value})} value={producto.stock} type='text' name="stock" ></input>
                <label>descripcion</label>
                <input onChange={e=>setProducto({...producto,descripcion:e.target.value})} value={producto.descripcion} type='text' name="descripcion" ></input>
-               
-               <label>Categoria</label>
-               
-                <select onChange={(e)=>console.log(e.target.value)}>
-                <option value="0" selected="selected"></option>
+               <label>categoria</label>
+                <select onChange={(e)=>setProducto({...producto,categorianame:JSON.parse(e.target.value).name,categoria:JSON.parse(e.target.value).id})}>
+                <option  selected="selected" defaultValue={""} disabled="true">categorias</option>
                     {categories.map(e=>{return(
-                        <option key={e._id} name={e.nombre} value={e._id}>{e.nombre}</option>
+                        <option key={e._id} name={e.nombre} value={'{"id":'+JSON.stringify(e._id)+',"name":'+JSON.stringify(e.nombre)+'}'} >{e.nombre}</option>
                     )})}
                 </select>
                
                
-               <div>
+               <div>  
                <label>Caracteristicas</label>
-               <label>Tipo de vino</label>
+               <label>Tipo de producto</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,tipo:e.target.value})} value={productocaracteristicas.tipo}  type='text' name="tipo" ></input>
                <label>Origen</label>
-               <input type='text' name="origen" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,origen:e.target.value})} value={productocaracteristicas.origen}  type='text' name="origen" ></input>
                <label>Provincia</label>
-               <input type='text' name="provincia" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,provincia:e.target.value})} value={productocaracteristicas.provincia}  type='text' name="provincia" ></input>
                <label>Localidad</label>
-               <input type='text' name="localidad" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,localidad:e.target.value})} value={productocaracteristicas.localidad}  type='text' name="localidad" ></input>
                <label>Altura</label>
-               <input type='text' name="altura" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,altura:e.target.value})} value={productocaracteristicas.altura}  type='text' name="altura" ></input>
                <label>Guarda</label>
-               <input type='text' name="guarda" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,guarda:e.target.value})} value={productocaracteristicas.guarda}  type='text' name="guarda" ></input>
                <label>Uva</label>
-               <input type='text' name="uva" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,uva:e.target.value})} value={productocaracteristicas.uva}  type='text' name="uva" ></input>
                <label>Cosecha</label>
-               <input type='text' name="cosecha" ></input>
+               <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,cosecha:e.target.value})} value={productocaracteristicas.cosecha}   type='text' name="cosecha" ></input>
                </div>
-               <button onClick={()=>console.log(producto)}>producto</button>
+               <button onClick={()=>onSumit()}>producto</button>
     </div>
   )
 }

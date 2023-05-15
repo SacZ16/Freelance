@@ -36,7 +36,7 @@ const getProducts = async (req, res) => {
   }
 
   const postProduct = async (req, res) => {
-    const { titulo, precio, unidades, valorunidad, stock, estado, descripcion, categoria, imagenes, caracteristicas } = req.body;
+    const { titulo, precio, unidades, valorunidad, stock, descripcion, categoria, imagenes, caracteristicas } = req.body;
     try {
       const newProduct = new Product({
         titulo,
