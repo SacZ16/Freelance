@@ -1,4 +1,5 @@
 import Card from "../components/card/Card";
+import { useEffect, useState } from "react";
 import Carousel from "../components/carousel/Carousel";
 import DetailEnvios from "../components/detailEnvios/DetailEnvios";
 import Navbar from "../navbar/Navbar";
@@ -9,22 +10,58 @@ import "./Home.css";
 import Footer2 from "./Footer2";
 
 export default function Home() {
+  const [home, setHome] = useState("");
+  const [elejidos, setElejidos] = useState("");
+
+  const optionGet = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Origin: "",
+      authorization: "Barrer",
+    },
+  };
+
+  useEffect(() => {
+    if (home?.elegidos?.nombre)
+      fetch(
+        "http://localhost:8080/products/filter/" + home.elegidos.nombre,
+        optionGet
+      )
+        .then(async(r) =>{
+          if(r.status===200){
+            const response = await r.json()
+            console.log(":)",response)
+             setElejidos(response)
+          }
+        })
+  }, [home]);
+  useEffect(() => {
+    fetch("http://localhost:8080/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log(e)})
+  }, [])
+
+  
   return (
     <main>
       <div className="ventaporcaja-home">
        <p className="ventaporcaja-letra-home">VENTA POR CAJA EXCLUSIVAMENTE</p>
         </div>
       <Navbar />
-      <Carousel width={"90vw"} height={"50vh"} fix={false}/>
+      {home.slice&&<Carousel width={"90vw"} height={"50vh"} fix={false} array={home?.slice}/>}
       <div className="detailenvios-media-home">
       <DetailEnvios  width={"90vw"}/>
       </div>
       <section className="section1-media-home" style={{display:'flex',gap:'15px',justifyContent:'center'}}>
-        <img src={vinos} alt="vinos"/>
-        <img src={vinos} alt="vinos"/>
+        {home.posters&&
+        <>
+          <img src={home.posters[0]} alt="vinos"/>
+        <img src={home.posters[1]} alt="vinos"/>
+        </>
+        }
       </section>
       <section style={{ padding: "0px 20px",maxWidth:'95vw',margin:'auto' }}>
-        <h3 className="vinos-text-home">VINOS</h3>
+        <h3 className="vinos-text-home">{home?.elegidos?.nombre}</h3>
         <section className="grid-container-cards">
           {[1, 2, 3, 4].map((producto, index) => {
             return <Card />;
@@ -34,7 +71,7 @@ export default function Home() {
       <section className="section-destacados-home">
         <h3 className="destacados-text-home">DESTACADOS</h3>
         <section className="grid-container-cards">
-          {[1, 2, 3, 4].map((producto, index) => {
+          {elejidos&& elejidos.slice(0,3).map((producto, index) => {
             return <Card />;
           })}
         </section>

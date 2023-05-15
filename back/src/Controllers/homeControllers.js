@@ -3,7 +3,7 @@ const Home = require("../models/Home.js");
 
 const getHome = async(req, res) =>{
     try{
-        const home = await Home.find();
+        const home = await Home.find().populate("elegidos").populate("destacados");
         return res.status(200).json(home)
     }catch(e){
         return res.json({ msg: `Error 404 - ${e}` });
@@ -22,6 +22,22 @@ const updateSlice = async (req, res) => {
       return res.status(200).json({ msg: "Category Update" });
     } catch (e) {
       return res.status(405).json({ msg: `Error 404 - ${e}` });
+    }
+  };
+
+  const postHome = async (req, res) => {
+    const { slice, posters, elegidos, destacados } = req.body;
+    try {
+      const newHome = new Home({
+       slice,
+       posters,
+       elegidos,
+       destacados
+      });
+      await newHome.save();
+      return res.status(200).json(newHome,);
+    } catch (e) {
+      console.log(res.status(404).json({ msg: `Error 404 ${e}` }));
     }
   };
 
@@ -70,4 +86,4 @@ const updateSlice = async (req, res) => {
     }
   };
 
-module.exports = {getHome, updateSlice, updatePosters, updateElegidos, updateDestacados}
+module.exports = {getHome, updateSlice, updatePosters, updateElegidos, updateDestacados, postHome}

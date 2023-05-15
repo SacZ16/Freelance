@@ -6,9 +6,9 @@ const homeSchema = new mongoose.Schema({
     posters: [{
         type: String
     }],
-    elegidos: [{
+    elegidos: {
         type: mongoose.Schema.Types.ObjectId, ref: "Categoria"
-    }],
+    },
     destacados: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Product"
     }],
