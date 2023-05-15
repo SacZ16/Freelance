@@ -48,7 +48,7 @@ router.put("/fav/remove", removeFromFav)
 
 router.get("/categories", getCategories)
 router.post("/categories/add", postCategory)
-router.put("/category/update/:id", updateCategory)
+router.put("/category/update", updateCategory)
 router.delete("/category/delete/:id", deleteCategory)
 
 router.post("/process_payment",function(req,res){
