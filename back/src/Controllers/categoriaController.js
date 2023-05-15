@@ -3,7 +3,7 @@ const Category = require("../models/Categoria.js");
 const getCategories = async (req, res) => {
     try {
       const categories = await Category.find();
-      return res.json(categories);
+      return res.status(200).json(categories);
     } catch (e) {
       return res.json({ msg: `Error 404 - ${e}` });
     }

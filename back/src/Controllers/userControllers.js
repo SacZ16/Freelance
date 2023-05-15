@@ -1,5 +1,6 @@
 const User = require("../models/User.js")
 
+const {compare,encrypt, tokenSign} =require("./helpers");
 const  getUsers = async (req, res) => {
     try {
         const users = await User.find()
@@ -58,9 +59,9 @@ const registerUser = async (req,res) => {
       if (!checkPassword) {
         return res.status(401).json({ msg: "Contraseña invalida" });
       }
-      return res.status(200).send(tokenSession);
+      return res.status(200).json({token:tokenSession});
     } catch (e) {
-      return res.json({ msg: `Error - ${e}` });
+      return res.status(404).json({ msg: `Error - ${e}` });
     }
   }
 

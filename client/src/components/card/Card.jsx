@@ -3,7 +3,7 @@ import vino from "./vino.svg";
 import heart from "./heart.svg";
 import masboton from "./masboton.svg";
 import lupa from "./lupa.svg";
-export default function Card() {
+export default function Card({imagen,unidades,titulo,precio,valorUnidad,categoria}) {
   return (
     <main style={{background:'white'}}>
       <section className="container-section1-card">
@@ -25,20 +25,20 @@ export default function Card() {
           />
         </section>
         <div className="img-card">
-          <img src={vino} alt="vino" />
+          {imagen ? <img  width="326" height="326" src={imagen} alt="not found"/> :<img src={vino} alt="vino" />}
         </div>
       </section>
       <section className="container-section2-card">
         <div className="text-section1-card">
-          <p className="titulo-card">Caja de 6 unidades</p>
+          <p className="titulo-card">Caja de {unidades} unidades</p>
         </div>
         <div className="contenedor-detalle-card">
           <div className="text2-section1-card">
-            <p className="titulo2-card">ANGELICA ZAPATA MALBEC 2006</p>
+            <p className="titulo2-card">{titulo}</p>
           </div>
-          <p className="precio-card">$30.000</p>
-          <p className="texto-rojo-card">valor x unidad: 5.000</p>
-          <p className="texto-blue-card">texto azul</p>
+          <p className="precio-card">${precio}</p>
+          <p className="texto-rojo-card">valor x unidad: {valorUnidad}</p>
+          <p className="texto-blue-card">{categoria}</p>
         </div>
       </section>
     </main>

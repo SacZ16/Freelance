@@ -20,8 +20,23 @@ const getProducts = async (req, res) => {
     }
   };
 
+  const getFilteredsProducts = async (req, res) => {
+    const {nombre} = req.params;
+
+    try{
+        const products = await Product.find().populate("categoria")
+        console.log(products)
+        const filtereds = products.filter(e => e.categoria.nombre.toUpperCase() === nombre.toUpperCase())
+
+        return res.status(200).json(filtereds)
+    } 
+    catch (e){
+        console.log(e)
+    }
+  }
+
   const postProduct = async (req, res) => {
-    const { titulo, precio, unidades, valorunidad, stock, estado, descripcion, categoria, imagenes } = req.body;
+    const { titulo, precio, unidades, valorunidad, stock, estado, descripcion, categoria, imagenes, caracteristicas } = req.body;
     try {
       const newProduct = new Product({
         titulo,
@@ -32,7 +47,8 @@ const getProducts = async (req, res) => {
         estado,
         descripcion,
         categoria,
-        imagenes
+        imagenes,
+        caracteristicas: caracteristicas
       });
   
       await newProduct.save();
@@ -69,4 +85,4 @@ const getProducts = async (req, res) => {
     }
   };
 
-  module.exports = {getProducts, getProduct, postProduct, deleteProduct, updateProduct}
+  module.exports = {getProducts, getProduct, postProduct, deleteProduct, updateProduct, getFilteredsProducts}

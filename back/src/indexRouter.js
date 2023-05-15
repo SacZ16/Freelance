@@ -11,7 +11,7 @@ const {compare,encrypt, tokenSign} =require("./Controllers/helpers");
 
 
 const User = require("./models/User");
-const { deleteProduct, getProduct, getProducts, postProduct, updateProduct } = require("./Controllers/productController");
+const { deleteProduct, getProduct, getProducts, postProduct, updateProduct, getFilteredsProducts } = require("./Controllers/productController");
 const { addProductToCart, removeFromCart } = require("./Controllers/cartControllers");
 const { getCategories, postCategory, updateCategory, deleteCategory } = require("./Controllers/categoriaController");
 const { addProductToFav, removeFromFav } = require("./Controllers/favControllers");
@@ -35,6 +35,7 @@ router.post("/user/login", loginUser)
 
 router.get("/products", getProducts)
 router.get("/product/:id", getProduct)
+router.get("/products/filter/:nombre", getFilteredsProducts)
 router.post("/product/add",postProduct)
 router.put("/product/update/:id", updateProduct)
 router.delete("/product/delete/:id",deleteProduct)
