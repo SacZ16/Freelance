@@ -5,8 +5,14 @@ import car from "./car.svg";
 import help from "./help.svg";
 import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
+import {useJwt} from "react-jwt"
+
 export default function Navbar() {
   const [categorias, setCategorias] = useState([])
+
+  const [userData, setUserData] = useState(localStorage.getItem("Upmn"));
+
+  const [ decodedToken ] = useJwt(localStorage.getItem('Upmn'))
 
   const optionGet = {
     method: "GET",
@@ -18,8 +24,8 @@ export default function Navbar() {
     },
   };
 
+  console.log('cargando')
   useEffect(() => {
-    console.log('cargando')
     fetch("http://localhost:8080/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
   }, [])
   
@@ -40,8 +46,19 @@ export default function Navbar() {
           {/* <p className="h4-navbar">GIFT CARD</p> */}
         </section>
         <section className="section-navbar">
-          <Link to="/registro"> <img src={profile} alt="profile" /></Link>
-          <img src={car} alt="car" />
+          {
+            localStorage.getItem("Upmn")?
+            <>
+            <Link to="/perfil" style={{textDecoration:'none'}}> <img className="img-svg-navbar" src={profile} alt="profile" />
+          </Link>
+            <img src={car} alt="car" />
+            </>            
+            :
+            <>
+            <Link to="/login" style={{textDecoration:'none'}}>Iniciar</Link>
+            <Link to="/registro" style={{textDecoration:'none'}}>Registro</Link>
+            </>
+          }
           {/* <img src={help} alt="help"/> */}
         </section>
       </main>

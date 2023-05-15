@@ -38,6 +38,9 @@
 .h4-navbar:hover{
     background-color: #efefef51;
 }
+.img-svg-navbar{
+    filter: invert(7%) sepia(87%) saturate(3751%) hue-rotate(353deg) brightness(91%) contrast(95%);
+}
 @media (max-width: 600px){
     .section-navbar1{
         display: none;
