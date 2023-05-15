@@ -36,7 +36,10 @@ const productSchema = new mongoose.Schema({
   ],
   caracteristicas: {
     type: Object
-  }
+  },
+  estrellas: [{
+    type: Object
+  }]
 });
 
 module.exports = mongoose.model("Product", productSchema);

@@ -48,7 +48,8 @@ const getProducts = async (req, res) => {
         descripcion,
         categoria,
         imagenes,
-        caracteristicas: caracteristicas
+        caracteristicas: caracteristicas,
+        estrellas: []
       });
   
       await newProduct.save();

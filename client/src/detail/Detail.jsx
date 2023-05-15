@@ -32,6 +32,9 @@ export default function Detail() {
         </section>
         <section className="section-detail" >
           <img width={35} alt="none" src={estrella}/>
+          <img width={35} alt="none" src={estrella}/>
+          <img width={35} alt="none" src={estrella}/>
+          <img width={35} alt="none" src={estrella}/>
           <img width={35} alt="none" src={mediaEstrella}/>
           <span className="span-opiniones-detail">(21 Opiniones)</span>
         </section>
