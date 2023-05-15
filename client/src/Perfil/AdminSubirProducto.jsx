@@ -1,6 +1,6 @@
 import React,{useCallback,useEffect,useState} from 'react'
 import Card from '../components/card/Card'
-
+import './Perfil.css'
 
 export default function AdminSubirProducto() {
     
@@ -79,7 +79,9 @@ export default function AdminSubirProducto() {
         setLoading(false)
       }, []);
   return (
-    <div>
+    <div style={{display:'flex'}}>
+      <div>
+
         <Card
                   titulo={producto.titulo}
                   precio={producto.precio}
@@ -87,25 +89,44 @@ export default function AdminSubirProducto() {
                   unidades={producto.unidades}
                   categoria={producto.categorianame}
                   imagen={imagenes[0]}
-                />
-        <input onChange={(e) => handleimage(e)} type={"file"}></input>
+                  />
                {
-                imagenes.map(e=>{return(
-                    <img src={e} alt="not found" width={300} height={300}/>
-                )})
-               }
+                 imagenes.map(e=>{return(
+                   <img src={e} alt="not found" width={225} height={225}/>
+                   )})
+                  }
+                  </div>
+                <div style={{padding:'20px'}}>
+                    <div className='admin-subir-producto'>
+                  <section style={{marginRight:'5px',padding:'0px 10px'}}>
+               <label>Sube una imagen a la vez</label>
+        <input onChange={(e) => handleimage(e)} type={"file"}></input>
+                  </section>
+                  <section>
                <label>Titulo del producto</label>
                <input onChange={e=>setProducto({...producto,titulo:e.target.value})} value={producto.titulo} type='text' name="titulo" ></input>
+                  </section>
+                  <section>
                <label>Precio caja</label>
                <input onChange={e=>setProducto({...producto,precio:e.target.value})} value={producto.precio} type='text' name="precio" ></input>
+               </section>
+               <section>
                <label>Unidades por caja</label>
                <input onChange={e=>setProducto({...producto,unidades:e.target.value})} value={producto.unidades} type='text' name="unidades" ></input>
+               </section>
+               <section>
                <label>Valor por Unidad</label>
                <input onChange={e=>setProducto({...producto,valorunidad:e.target.value})} value={producto.valorunidad} type='text' name="valorunidad" ></input>
+               </section>
+               <section>
                <label>Stock</label>
                <input onChange={e=>setProducto({...producto,stock:e.target.value})} value={producto.stock} type='text' name="stock" ></input>
+               </section>
+               <section>
                <label>descripcion</label>
                <input onChange={e=>setProducto({...producto,descripcion:e.target.value})} value={producto.descripcion} type='text' name="descripcion" ></input>
+               </section>
+               <section>
                <label>categoria</label>
                 <select onChange={(e)=>setProducto({...producto,categorianame:JSON.parse(e.target.value).name,categoria:JSON.parse(e.target.value).id})}>
                 <option  selected="selected" defaultValue={""} disabled="true">categorias</option>
@@ -114,27 +135,50 @@ export default function AdminSubirProducto() {
                     )})}
                 </select>
                
-               
+                </section>
+               </div>
+                <hr></hr>
                <div>  
-               <label>Caracteristicas</label>
+               <label className='letra-perfil' style={{color:'black'}}>Caracteristicas</label>
+               <div className='admin-subir-producto'>
+
+               <section>
                <label>Tipo de producto</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,tipo:e.target.value})} value={productocaracteristicas.tipo}  type='text' name="tipo" ></input>
+               </section>
+               <section>
                <label>Origen</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,origen:e.target.value})} value={productocaracteristicas.origen}  type='text' name="origen" ></input>
+               </section>
+               <section>
                <label>Provincia</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,provincia:e.target.value})} value={productocaracteristicas.provincia}  type='text' name="provincia" ></input>
+               </section>
+               <section>
                <label>Localidad</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,localidad:e.target.value})} value={productocaracteristicas.localidad}  type='text' name="localidad" ></input>
+               </section>
+               <section>
                <label>Altura</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,altura:e.target.value})} value={productocaracteristicas.altura}  type='text' name="altura" ></input>
+               </section>
+               <section>
                <label>Guarda</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,guarda:e.target.value})} value={productocaracteristicas.guarda}  type='text' name="guarda" ></input>
+               </section>
+               <section>
                <label>Uva</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,uva:e.target.value})} value={productocaracteristicas.uva}  type='text' name="uva" ></input>
+               </section>
+               <section>
                <label>Cosecha</label>
                <input onChange={e=>setProductocaracteristicas({...productocaracteristicas,cosecha:e.target.value})} value={productocaracteristicas.cosecha}   type='text' name="cosecha" ></input>
+               </section>
                </div>
-               <button onClick={()=>onSumit()}>producto</button>
+               </div>
+               <button  onClick={()=>onSumit()} className='letra-perfil'>Publicar producto</button>
+               </div>
+               
     </div>
   )
 }

@@ -7,3 +7,36 @@ text-align: center;
 letter-spacing: 0.16em;
 color: #FFFFFF;
 }
+.admin-subir-producto{    
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;    
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 300;
+line-height: 33px;
+text-align: center;
+letter-spacing: 0.16em;
+}
+.admin-subir-producto input{
+    width: 100%;
+ max-height: 25px;
+ padding: 2px;
+ border-radius: 5px;
+ margin: 5px 5px 5px 0px;
+ font-family: 'Poppins';
+ font-style: normal;
+ font-weight: 300;
+ line-height: 33px;
+ letter-spacing: 0.16em;
+ padding-left: 5px;
+ color: #FFFFFF;
+ 
+}
+.admin-subir-producto section{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
