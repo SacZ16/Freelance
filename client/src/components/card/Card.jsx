@@ -25,7 +25,7 @@ export default function Card({imagen,unidades,titulo,precio,valorUnidad,categori
           />
         </section>
         <div className="img-card">
-          {imagen ? <img  width="326" height="326" src={imagen} alt="not found"/> :<img src={vino} alt="vino" />}
+          <img  width="326" height="326" src={imagen} alt="not found"/>  
         </div>
       </section>
       <section className="container-section2-card">

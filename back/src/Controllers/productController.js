@@ -44,11 +44,11 @@ const getProducts = async (req, res) => {
         unidades,
         valorunidad,
         stock,
-        estado,
+        estado: true,
         descripcion,
         categoria,
         imagenes,
-        caracteristicas: caracteristicas,
+        caracteristicas,
         estrellas: []
       });
   

@@ -5,14 +5,9 @@ import car from "./car.svg";
 import help from "./help.svg";
 import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
-import {useJwt} from "react-jwt"
 
 export default function Navbar() {
   const [categorias, setCategorias] = useState([])
-
-  const [userData, setUserData] = useState(localStorage.getItem("Upmn"));
-
-  const { decodedToken } = useJwt(localStorage.getItem('Upmn'))
 
   const optionGet = {
     method: "GET",
@@ -24,11 +19,9 @@ export default function Navbar() {
     },
   };
 
-  console.log('cargando')
   useEffect(() => {
     fetch("http://localhost:8080/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
   }, [])
-  console.log(decodedToken)
   
   return (
     <div>
@@ -66,7 +59,7 @@ export default function Navbar() {
       <section className="section-navbar2">
       {categorias?.map(e=>{
             return (
-              <Link to={`/${e.nombre.toLowerCase()}`}>
+              <Link to={`/${e.nombre.toLowerCase()}`} key={e._id}>
                 <p className="h4-navbar">{e.nombre.toUpperCase()}</p>
               </Link>
             )
