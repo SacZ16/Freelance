@@ -1,8 +1,12 @@
 import React,{useCallback,useEffect,useState} from 'react'
+import swal from "sweetalert"
 import Card from '../components/card/Card'
+import { useNavigate } from 'react-router-dom'
 import './Perfil.css'
 
 export default function AdminSubirProducto() {
+
+  const navigate = useNavigate()
     
     const optionGet = {
         method: "GET",
@@ -41,7 +45,23 @@ export default function AdminSubirProducto() {
       let listoproducto= producto
       listoproducto.caracteristicas=productocaracteristicas
       listoproducto.imagenes=imagenes
-      console.log(JSON.stringify(listoproducto))
+      if(listoproducto.titulo.length < 1 || 
+        listoproducto.precio < 1 ||
+        listoproducto.valorunidad < 1 ||
+        listoproducto.unidades < 1 ||
+        listoproducto.imagenes.length < 1 ||
+        listoproducto.categoria.length < 1 ||
+        listoproducto.caracteristicas.tipo.length < 1 ||
+        listoproducto.caracteristicas.origen.length < 1 ||
+        listoproducto.caracteristicas.provincia.length < 1 ||
+        listoproducto.caracteristicas.localidad.length < 1 ||
+        listoproducto.caracteristicas.altura.length < 1 ||
+        listoproducto.caracteristicas.guarda.length < 1 ||
+        listoproducto.caracteristicas.uva.length < 1 ||
+        listoproducto.caracteristicas.cosecha.length < 1
+        ) return swal("Advertencia",
+        "Por favor completa todos los campos",
+        "warning")
       fetch("http://localhost:8080/product/add", {
       method: "POST",
       body: JSON.stringify(listoproducto),
@@ -51,8 +71,28 @@ export default function AdminSubirProducto() {
         Origin: "",
         authorization:`Barrer ${localStorage.getItem("Upmn")}`,
       },
+    }).then(r => { if (r.status === 200 ){
+      swal("Listo","Producto agregado correctamente", "success")
+       setProducto({
+      titulo:"",
+        precio:0,
+        valorunidad:0,
+        unidades:0,
+        imagenes:"",
+        categoria:"",
+        categorianame:"-",
+        caracteristicas:""
     })
-
+    setProductocaracteristicas({
+      tipo:"",
+      origen:"",
+      provincia:"",
+      localidad:"",
+      altura:"",
+      guarda:"",
+      uva:"",
+      cosecha:""
+    })} else  swal("Error", "Ha occurrido un error inesperado", "error")})
     }
     const [imagenes, setImagenes] = useState([])
     const [loading,setLoading] = useState(true)
