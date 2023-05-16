@@ -9,6 +9,7 @@ import lupa from "./lupa.svg";
 import swal from "sweetalert";
 import {useJwt} from 'react-jwt'
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Card({ imagen, unidades, titulo, precio, valorUnidad, categoria, id, usuarioJWTFAV, usuario,setActualizar,actualizar,usuarioJWTCAR}) {
 
@@ -88,39 +89,39 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
 // console.log("favo",usuarioJWTFAV,titulo)
 // console.log("carro",usuarioJWTCAR,titulo)
   return (
-    <main style={{background:'white',width:'max-content'}}>
-      <section className="container-section1-card">
+<main  style={{background:'white',width:'max-content'}}>
+    <section className="container-section1-card">
         <section className="container-section1-icons-card">
           {!usuarioJWTFAV &&<img
-          onClick={() => {usuario?addFav(id, usuario._id):alert("inicia sesion")}}
-            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
+          onClick={() => {addFav(id, usuario._id)}}
+            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
             src={heart2}
             alt="heart"
           />}
            {usuarioJWTFAV&& <img
           onClick={() => removeFav(id, usuario._id)}
-            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
+            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
             src= {heart}
             alt="heart"
           />}
           {!usuarioJWTCAR&&<img
-            onClick={() => {usuario?addtoCart(id, usuario._id):alert("inicia sesion")}}
-            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
+            onClick={() => {addtoCart(id, usuario._id)}}
+            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
             src={carrito}
             alt="carrito"
           />}
            {usuarioJWTCAR&&<img
             onClick={() => removeFromCart(id, usuario._id)}
-            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
+            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
             src={carrito2}
             alt="carrito"
           />}
         </section>
-        <div className="img-card">
+        <Link to={`/detalle/${id}`} className="img-card">
           <img  width="326" height="326" src={imagen} alt="not found"/>  
-        </div>
+        </Link>
       </section>
-      <section className="container-section2-card">
+      <Link to={`/detalle/${id}`} className="container-section2-card">
         <div className="text-section1-card">
           <p className="titulo-card">Caja de {unidades} unidades</p>
         </div>
@@ -132,7 +133,7 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
           <p className="texto-rojo-card">valor x unidad: {valorUnidad}</p>
           <p className="texto-blue-card">{categoria}</p>
         </div>
-      </section>
-    </main>
+      </Link>
+       </main>
   );
 }

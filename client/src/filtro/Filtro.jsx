@@ -48,7 +48,7 @@ export default function Filtro() {
             productos.map((producto) => {
               return (
                 <Card
-                key={producto._id}
+                  key={producto._id}
                   id={producto._id}
                   titulo={producto.titulo}
                   precio={producto.precio}

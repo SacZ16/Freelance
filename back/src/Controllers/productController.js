@@ -14,9 +14,9 @@ const getProducts = async (req, res) => {
   
     try {
       const productDetailed = await Product.findById(id);
-      return res.json(productDetailed);
+      return res.status(200).json(productDetailed);
     } catch (e) {
-      return res.json({ msg: `Error 404 - ${e}` });
+      return res.status(404).json({ msg: `Error 404 - ${e}` });
     }
   };
 
@@ -47,7 +47,7 @@ const getProducts = async (req, res) => {
         descripcion,
         categoria,
         imagenes,
-        caracteristicas,
+        caracteristicas : caracteristicas,
         estrellas: []
       });
   

@@ -8,8 +8,46 @@ import Footer2 from "../home/Footer2"
 import flecha from "./flecha.svg"
 import estrellaRoja from "./estrellaRoja.svg"
 import corazon from "../components/card/heart.svg"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
 export default function Detail() {
+
+  const {id} = useParams()
+
+  const [producto, setProducto] = useState("")
+
+  const optionGet = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Origin: "",
+      authorization: "Barrer",
+    },
+  };
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [])
+  
+  useEffect(() => {
+    fetch("http://localhost:8080/product/"+ id , optionGet).then(async r =>{
+      console.log(r.status)
+      if(r.status !==200){
+        return alert("ese producto no existe")
+      }
+      const respuesta= await r.json()
+      console.log(respuesta)
+      setProducto(respuesta)
+    })
+  }, [])
+
+
+
   return (
     <div>        
       <div className="ventaporcaja-detail">
@@ -19,12 +57,12 @@ export default function Detail() {
       <div style={{width:'95vw',margin:'auto'}}>
       <section style={{display:'flex'}}>      
         <section style={{width:'50vw',height:'80vh'}}>
-      <Carousel width={"40vw"} height={"100%"} fix={false}/>
+      {producto&&<Carousel width={"40vw"} height={"100%"} fix={false} array={producto.imagenes}/>}
             </section>  
       <section>
-        <h1 className="title-detail">ANGELICA ZAPATA MALBEC 2006</h1>
-        <h3 className="precio-detail">$30.000</h3>
-        <h4 className="subtitle-detail">PRECIO POR BOTELLA: $5.000</h4>
+        <h1 className="title-detail">{producto.titulo}</h1>
+        <h3 className="precio-detail">${producto.precio} (caja)</h3>
+        <h4 className="subtitle-detail">${producto.valorunidad} (unidad)</h4>
         <section className="section-contador-stock-detail">
           <button>-</button>
           <span> 1 </span>
@@ -40,14 +78,14 @@ export default function Detail() {
         </section>
         <h4 className="caracteristicas-detail">Características</h4>
         
-          <li className="li-detail"><span style={{color:'#197799'}}>Tipo de vino: </span>Tinto</li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Origen: </span>Argentina</li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Provincia: </span>Mendoza</li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Localidad: </span>Las compuertas y la Consulta</li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Altura:</span></li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Guarda: </span>JOVEN- CRIANZA -RESERVA- GRAN RESERVA</li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Uva: </span>Malbec (69%),Cabernet sauvignon (31%)</li>
-          <li className="li-detail"><span style={{color:'#197799'}}>Cosecha: </span>2006</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Tipo de vino: </span>{producto.caracteristicas?.tipo}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Origen: </span>{producto.caracteristicas?.origen}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Provincia: </span>{producto.caracteristicas?.provincia}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Localidad: </span>{producto.caracteristicas?.localidad}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Altura: </span>{producto.caracteristicas?.altura}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Guarda: </span>{producto.caracteristicas?.guarda}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Uva: </span>{producto.caracteristicas?.uva}</li>
+          <li className="li-detail"><span style={{color:'#197799'}}>Cosecha: </span>{producto.caracteristicas?.cosecha}</li>
         
       <button className="comprar-detail">COMPRAR</button>
       <section style={{marginTop:'10px',marginBottom:'75px'}}>
