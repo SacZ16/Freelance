@@ -4,7 +4,7 @@ import close from './close.svg'
 export default function CarritoCard({setEstadoCarrito}) {
     // document.body.classList.add('no-scroll')
   return (
-    <div style={{width:'100vw',height:'100vh',display:'flex',justifyContent:'center',position:'fixed',zIndex:'123123123',top:'0',alignItems:'center'}}>
+    <div style={{width:'100vw',height:'100vh',display:'flex',justifyContent:'center',position:'fixed',zIndex:'123123123',top:'0',alignItems:'center',background:'#00000096'}}>
     <div style={{borderRadius:'10px',position:'absolute',border:'4px solid transparent',zIndex:'10210300',maxWidth:'360px',width:'100vw',height:'90vh',background:'white',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
         <div style={{display:'flex',justifyContent:'end',paddingBottom:'10px'}}>
             <img   
