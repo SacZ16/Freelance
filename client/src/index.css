@@ -14,7 +14,10 @@ overflow-x: hidden;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+.no-scroll {
+  max-height: 100vh;
+  overflow: hidden;
+}
 a {
   font-weight: 500;
   color: #646cff;
