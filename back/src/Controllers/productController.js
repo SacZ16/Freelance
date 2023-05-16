@@ -25,7 +25,6 @@ const getProducts = async (req, res) => {
 
     try{
         const products = await Product.find().populate("categoria")
-        console.log(products)
         const filtereds = products.filter(e => e.categoria.nombre.toUpperCase() === nombre.toUpperCase())
 
         return res.status(200).json(filtereds)

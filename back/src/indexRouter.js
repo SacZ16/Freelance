@@ -34,6 +34,12 @@ router.get("/user/:id", getUser)
 router.post("/user/register", registerUser)
 router.post("/user/login", loginUser)
 
+router.post("/fav/add", addProductToFav)
+router.put("/fav/remove", removeFromFav)
+
+router.post("/cart/add", addProductToCart)
+router.put("/cart/remove", removeFromCart)
+
 router.get("/products", getProducts)
 router.get("/product/:id", getProduct)
 router.get("/products/filter/:nombre", getFilteredsProducts)
@@ -48,11 +54,7 @@ router.put("/home/posters", updatePosters)
 router.put("/home/elegidos", updateElegidos)
 router.put("/home/destacados", updateDestacados)
 
-router.post("/cart/add", addProductToCart)
-router.put("/cart/remove", removeFromCart)
 
-router.post("/fav/add", addProductToFav)
-router.put("/fav/remove", removeFromFav)
 
 router.get("/categories", getCategories)
 router.post("/categories/add", postCategory)

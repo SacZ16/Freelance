@@ -49,6 +49,7 @@ export default function Filtro() {
               return (
                 <Card
                 key={producto._id}
+                  id={producto._id}
                   titulo={producto.titulo}
                   precio={producto.precio}
                   valorUnidad={producto.valorunidad}

@@ -9,10 +9,9 @@ import mascota from "./mascota.svg"
 import "./Home.css";
 import Footer2 from "./Footer2";
 
-export default function Home() {
+export default function Home({usuarioJWT,setActualizar,actualizar}) {
   const [home, setHome] = useState("");
-  const [elejidos, setElejidos] = useState("");
-
+  const [elegidos, setElegidos] = useState("");
   const optionGet = {
     method: "GET",
     headers: {
@@ -33,7 +32,7 @@ export default function Home() {
           if(r.status===200){
             const response = await r.json()
             console.log(":)",response)
-             setElejidos(response)
+             setElegidos(response)
           }
         })
   }, [home]);
@@ -63,8 +62,13 @@ export default function Home() {
       <section style={{ padding: "0px 20px",maxWidth:'95vw',margin:'auto' }}>
         <h3 className="vinos-text-home">{home?.elegidos?.nombre}</h3>
         <section className="grid-container-cards">
-        {elejidos&& elejidos.reverse().slice(0,4).map((producto, index) => {
+        {elegidos&& elegidos.slice(0,4).map((producto, index) => {
             return <Card key={producto._id}
+            usuarioJWTFAV={usuarioJWT?usuarioJWT.favoritos.map(e=>e._id).includes(producto._id):false}
+            usuario={usuarioJWT?usuarioJWT:"login"}
+            usuarioJWTCAR={usuarioJWT?usuarioJWT.carrito.map(e=>e._id).includes(producto._id):false}
+            actualizar={actualizar} setActualizar={setActualizar}
+            id={producto._id}
             titulo={producto.titulo}
             precio={producto.precio}
             valorUnidad={producto.valorunidad}
@@ -79,6 +83,11 @@ export default function Home() {
         <section className="grid-container-cards">
           {home.destacados&& home.destacados.slice(0,4).map((producto, index) => {
             return <Card key={producto._id}
+            id={producto._id}
+            usuarioJWTCAR={usuarioJWT?usuarioJWT.carrito.map(e=>e._id).includes(producto._id):false}
+            usuarioJWTFAV={usuarioJWT?usuarioJWT.favoritos.map(e=>e._id).includes(producto._id):false}
+            usuario={usuarioJWT?usuarioJWT:"login"}
+            actualizar={actualizar} setActualizar={setActualizar}
             titulo={producto.titulo}
             precio={producto.precio}
             valorUnidad={producto.valorunidad}

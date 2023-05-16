@@ -14,7 +14,7 @@ const addProductToFav = async (req, res) => {
         if(!user){
             return res.status(400).json({msg: "User not found"});
         }
-        if(user.carrito.filter(e => (e+'') === idProduct).length > 0){
+        if(user.favoritos.filter(e => (e+'') === idProduct).length > 0){
             return res.status(405).json({msg: "This product is already in favs"})
         }
         user.favoritos.push(idProduct)

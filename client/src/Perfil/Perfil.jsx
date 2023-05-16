@@ -8,10 +8,7 @@ import Footer2 from '../home/Footer2'
 import "./Perfil.css"
 import {useJwt} from 'react-jwt'
 
-export default function Perfil() {
-  const [usuario, setUsuario] = useState("")
-  const { decodedToken } = useJwt(localStorage.getItem("Upmn"));
-console.log("params perfil",decodedToken)
+export default function Perfil({setActualizar,actualizar,usuario}) {
 console.log({usuario})
     //use fect para ver si es admin
     const optionGet = {
@@ -24,9 +21,6 @@ console.log({usuario})
       },
     };
   
-    useEffect(() => {
-      if(decodedToken)fetch("http://localhost:8080/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
-    }, [decodedToken])
     
   return (
     <div>
@@ -40,9 +34,9 @@ console.log({usuario})
 <Loading></Loading>
 :
 usuario.isAdmin ?
-<Admin usuario={usuario}></Admin>
+<Admin usuario={usuario} actualizar={actualizar} setActualizar={setActualizar} ></Admin>
 :
-<User usuario={usuario}></User>
+<User usuario={usuario} actualizar={actualizar} setActualizar={setActualizar} ></User>
 }
   <br />
 <Footer2></Footer2>

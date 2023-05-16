@@ -6,7 +6,7 @@ import swal from "sweetalert"
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css"
 
-export default function RegisterPage() {
+export default function RegisterPage({setActualizar,actualizar}) {
   const navigate = useNavigate();
   const [formulario, setFormulario] = useState({
     nombre:"",
@@ -58,6 +58,7 @@ export default function RegisterPage() {
       swal("Bienvenido!",
       "Su cuenta fue creada exitosamente!",
       "success")
+          setActualizar(!actualizar)
       navigate("/login");
     }
     if(r.status===405){

@@ -8,21 +8,41 @@ import Compra from "./compra/Compra";
 import Filtro from "./filtro/Filtro";
 import Perfil from "./Perfil/Perfil";
 import RegisterPage from "./Login/RegisterPage";
+import { useEffect,useState } from "react";
+import { useJwt } from "react-jwt";
 
 
 
 function App() {
-  
+
+  const [usuario, setUsuario] = useState("")
+  const [actualizar,setActualizar] =useState(false)
+  const { decodedToken } = useJwt(localStorage.getItem("Upmn"));
+
+  const optionGet = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Origin: "",
+      authorization: "Barrer",
+    },
+  };
+
+  useEffect(() => {
+    if(decodedToken&&localStorage.getItem("Upmn"))fetch("http://localhost:8080/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
+    if(!localStorage.getItem("Upmn"))setUsuario(null)
+  }, [decodedToken,actualizar,localStorage.getItem("Upmn")])
 
 
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/" element={<Home usuarioJWT={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/:filtro" element={<Filtro/>}/>
-      <Route path="/registro" element={<RegisterPage/>}/>
-      <Route path="/login" element={<LoginPage/>}/>
-      <Route path="/perfil" element={<Perfil/>}/>
+      <Route path="/registro" element={<RegisterPage actualizar={actualizar} setActualizar={setActualizar}/>}/>
+      <Route path="/login" element={<LoginPage actualizar={actualizar} setActualizar={setActualizar}/>}/>
+      <Route path="/perfil" element={<Perfil usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/detalle/:id" element={<Detail/>}/>
       <Route path="/cpm" element={<Compra/>}/>
     </Routes>

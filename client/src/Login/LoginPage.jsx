@@ -6,7 +6,7 @@ import swal from "sweetalert"
 import DetailEnvios from '../components/detailEnvios/DetailEnvios'
 import { useNavigate, Link } from "react-router-dom";
 
-export default function LoginPage() {
+export default function LoginPage({setActualizar,actualizar}) {
   const navigate = useNavigate();
   const [formulario, setFormulario] = useState({
     email:"",
@@ -52,6 +52,7 @@ export default function LoginPage() {
           swal("Bienvenido",
           "Accediste a tu cuenta correctamente",
           "success")
+          setActualizar(!actualizar)
           navigate("/")
         }
       if(r.status===405){
