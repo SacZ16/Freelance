@@ -19,7 +19,7 @@ export default function AdminVerProductos() {
     fetch("http://localhost:8080/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))
   }, [])
   return (
-    <div>
+    <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-evenly'}}>
       {
         AllProducts.length > 0 && AllProducts.map(producto => {
           return (

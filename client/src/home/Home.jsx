@@ -54,16 +54,16 @@ export default function Home() {
       </div>
       <section className="section1-media-home" style={{display:'flex',gap:'15px',justifyContent:'center'}}>
         {home.posters&&
-        <>
-          <img src={home.posters[0]} alt="vinos"/>
-        <img src={home.posters[1]} alt="vinos"/>
-        </>
+        <div style={{width:'90vw',margin:'auto',display:'flex',gap:'5px'}}>
+          <img src={home.posters[0]}width={'50%'} height={300} alt="vinos"/>
+        <img src={home.posters[1]} width={'50%'} height={300}alt="vinos"/>
+        </div>
         }
       </section>
       <section style={{ padding: "0px 20px",maxWidth:'95vw',margin:'auto' }}>
         <h3 className="vinos-text-home">{home?.elegidos?.nombre}</h3>
         <section className="grid-container-cards">
-        {elejidos&& elejidos.slice(0,4).map((producto, index) => {
+        {elejidos&& elejidos.reverse().slice(0,4).map((producto, index) => {
             return <Card key={producto._id}
             titulo={producto.titulo}
             precio={producto.precio}
@@ -91,36 +91,6 @@ export default function Home() {
       <section className="section3-mascota-home">
       <img style={{height:'270px'}} src={mascota} alt="mascota"/>
       </section>
-      {/* <section className="section4-sub-home">
-        <input type="email" className="input-sub-home" placeholder="ingresa tu correo electrónico"/>
-        <button className="button-sub-home">SUSCRIBIRME</button>
-      </section> */}
-      {/* <section className="section5-comunidad-home">
-        <p className="comunidad-home">Comunidad PMN</p>
-        <section className="subsection5-comunidad-home">
-          <div className="div-comunidad-home">
-            <img className="avatar-home" src={avatar} alt="avatar"/>
-            <p className="comentario-comunidad-home">Fácil de comprar y con buenas ofertas. Para guardar una de las mejores plataformas</p>
-          </div>
-          <div className="div-comunidad-home">
-            <img className="avatar-home" src={avatar} alt="avatar"/>
-            <p className="comentario-comunidad-home">Fácil de comprar y con buenas ofertas. Para guardar una de las mejores plataformas</p>
-          </div>
-          <div className="div-comunidad-home">
-            <img className="avatar-home" src={avatar} alt="avatar"/>
-            <p className="comentario-comunidad-home">Fácil de comprar y con buenas ofertas. Para guardar una de las mejores plataformas</p>
-          </div>
-        </section> 
-      </section>*/}
-      {/* <section className="section6-home">
-        <p className="ig-home">@pmnwines</p>
-        <section className="sub-section-ig-home">
-        <div className="div-ig-home"></div>
-        <div className="div-ig-home"></div>
-        <div className="div-ig-home"></div>
-        <div className="div-ig-home"></div>
-        </section>
-      </section> */}
       <div className="detailenvios-media-home">
       <Footer2></Footer2>
       </div>

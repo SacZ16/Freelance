@@ -4,10 +4,16 @@ import AdminCompras from "./AdminCompras";
 import AdminCategorias from "./AdminCategorias";
 import AdminConfigurarInicio from "./AdminConfigurarInicio";
 import AdminVerProductos from "./AdminVerProductos";
+import swal from "sweetalert";
+import {useNavigate} from "react-router-dom"
 import "./Perfil.css"
 
 export default function Admin({ usuario }) {
-    const [show, setShow] = useState("compras");  return (
+    const [show, setShow] = useState("compras");
+
+    const navigate = useNavigate()
+    
+    return (
     <div
     style={{
       border: "1px solid black",
@@ -39,7 +45,7 @@ export default function Admin({ usuario }) {
         <span>
         </span>
       </div>
-      <button className="letra-perfil" style={{backgroundColor:'rgb(217 9 9)',fontWeight: 600,height:'max-content'}}>Cerrar sesion</button>
+      <button className="letra-perfil" style={{backgroundColor:'rgb(217 9 9)',fontWeight: 600,height:'max-content'}} onClick={()=>{localStorage.removeItem("Upmn"); swal("Cerraste Sesion","Volve Pronto!", "success"); navigate("/")}}>Cerrar sesion</button>
       
       <div style={{display:'flex',justifyContent:'space-evenly',width:'100%',marginTop:'15px'}}>
       <div style={{ display: "flex", gap: "3rem",display:'flex',flexWrap:'wrap' }}>

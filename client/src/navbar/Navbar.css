@@ -19,7 +19,21 @@
     gap: 1.5rem;
     align-items: center;
 }
-
+.letras-navbar{    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 32px;    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1em;  
+    color:'black'
+}
+.letras-navbar:hover{
+    background-color: #43713e;
+}
 .h4-navbar{
     font-family: 'Poppins';
     font-style: normal;

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import "./Perfil.css"
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+
+
+
 export default function User({ usuario }) {
   const [show, setShow] = useState("compras");
+
+  const navigate = useNavigate()
+
   return (
     <div
       style={{
@@ -35,7 +43,7 @@ export default function User({ usuario }) {
           <button onClick={() => setShow("compras")} className="letra-perfil">Compras</button>
           <button onClick={() => setShow("favoritos")} className="letra-perfil">Favoritos</button>
         </div>
-        <button className="letra-perfil">Cerrar sesion</button>
+        <button onClick={()=>{localStorage.removeItem("Upmn"); swal("Cerraste Sesion","Volve Pronto!", "success"); navigate('/')}}  className="letra-perfil" style={{backgroundColor:'rgb(217 9 9)',fontWeight: 600,height:'max-content'}} >Cerrar sesion</button>
       </div>
       <br></br>
       <hr></hr>

@@ -49,8 +49,8 @@ export default function Navbar() {
             </>            
             :
             <>
-            <Link to="/login" style={{textDecoration:'none'}}>Iniciar</Link>
-            <Link to="/registro" style={{textDecoration:'none'}}>Registro</Link>
+            <Link to="/login" style={{textDecoration:'none'}}><button className="letras-navbar">Iniciar</button></Link>
+            <Link to="/registro" style={{textDecoration:'none'}}><button className="letras-navbar">Registro</button></Link>
             </>
           }
           {/* <img src={help} alt="help"/> */}

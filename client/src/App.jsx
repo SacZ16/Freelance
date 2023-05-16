@@ -10,10 +10,9 @@ import Perfil from "./Perfil/Perfil";
 import RegisterPage from "./Login/RegisterPage";
 
 
-import {useJwt} from 'react-jwt'
 
 function App() {
-  const { decodedToken } = useJwt(localStorage.getItem("Upmn"));
+  
 
 
   return (
@@ -23,7 +22,7 @@ function App() {
       <Route path="/:filtro" element={<Filtro/>}/>
       <Route path="/registro" element={<RegisterPage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
-      <Route path="/perfil" element={<Perfil decodedToken={decodedToken}/>}/>
+      <Route path="/perfil" element={<Perfil/>}/>
       <Route path="/detalle/:id" element={<Detail/>}/>
       <Route path="/cpm" element={<Compra/>}/>
     </Routes>

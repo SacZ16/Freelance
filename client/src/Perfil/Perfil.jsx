@@ -6,9 +6,11 @@ import { Loading } from '../components/loading/Loading'
 import Navbar from '../navbar/Navbar'
 import Footer2 from '../home/Footer2'
 import "./Perfil.css"
+import {useJwt} from 'react-jwt'
 
-export default function Perfil({decodedToken}) {
+export default function Perfil() {
   const [usuario, setUsuario] = useState("")
+  const { decodedToken } = useJwt(localStorage.getItem("Upmn"));
 console.log("params perfil",decodedToken)
 console.log({usuario})
     //use fect para ver si es admin
@@ -42,26 +44,6 @@ usuario.isAdmin ?
 :
 <User usuario={usuario}></User>
 }
-      
-
-{/* {isAdmin ? 
-<div>
-<div>Nombre</div>
-<div>Email</div>
-<div>Compras</div>
-<div>Favoritos</div>
-<div>Cerrar sesion</div>
-</div>
-:
-<div>
-<div>Nombre</div>
-<div>Email</div>
-<div>Compras</div>
-<div>Categorias</div>
-<div>Editar home</div>
-<div>Subir Producto</div>
-<div>Cerrar sesion</div>
-    </div>} */}
   <br />
 <Footer2></Footer2>
     </div>
