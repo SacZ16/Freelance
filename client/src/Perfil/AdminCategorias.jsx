@@ -50,7 +50,7 @@ export default function AdminCategorias(){
           Origin: "",
           authorization:`Barrer ${localStorage.getItem("Upmn")}`,
         },
-      }).then(r => r.status === 200 && fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
+      }).then(r => r.status === 200 ? fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
       setNewCategory({
         nombre: ""
       })
@@ -58,7 +58,7 @@ export default function AdminCategorias(){
       "Categoria agregada correctamente",
       "success")
     
-    }))
+    }): swal("Error", "Ha ocurrido un error inesperado", "error"))
     }
 
     const onPut = () =>{
@@ -72,17 +72,17 @@ export default function AdminCategorias(){
               Origin: "",
               authorization:`Barrer ${localStorage.getItem("Upmn")}`,
             },
-          }).then(r => r.status === 200 && fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
+          }).then(r => r.status === 200 ? fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
           swal("Listo",
           "Categoria modificada correctamente",
-          "success")}))
+          "success")}):swal("Error", "Ha ocurrido un error inesperado", "error"))
     }
 
     const handleDelete = (_id) => {
-        fetch("http://localhost:8080/category/delete/"+ _id, optionDelete).then(r => r.status === 200 && fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
+        fetch("http://localhost:8080/category/delete/"+ _id, optionDelete).then(r => r.status === 200 ? fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
         swal("Listo",
         "Categoria eliminada correctamente",
-        "success")}))
+        "success")}): swal("Error", "Ha occurido un error inesperado", "error"))
     }
 
       return (

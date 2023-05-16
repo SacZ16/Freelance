@@ -47,7 +47,6 @@ const [loading, setLoading] = useState(false)
     console.log("ayuda",categoriaSeleccionada)
   }, [categoriaSeleccionada]);
   useEffect(() => {
-
     fetch("http://localhost:8080/products", optionGet).then(r => r.json()).then(r => {setAllProducts(r)})
     fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=>{setCategories(e)})
     fetch("http://localhost:8080/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log({e});setDestacadoModificado({producto1:e[0].destacados[0],producto2:e[0].destacados[1],producto3:e[0].destacados[2],producto4:e[0].destacados[3]});setPostersModificado(e[0].posters);setSliceModificado(e[0].slice);setCategoriaSeleccionada({id:e[0].elegidos._id,nombre:e[0].elegidos.nombre})})
