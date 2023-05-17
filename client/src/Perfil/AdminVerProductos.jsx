@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import Card from '../components/card/Card';
-import ModificarProducto from './modificarProducto';
+import ModificarProductoPage from './ModificarProductoPage';
 
 export default function AdminVerProductos() {
 
@@ -30,7 +30,7 @@ export default function AdminVerProductos() {
 
   const deleteProduct = (id) => {
     fetch("http://localhost:8080/product/delete/" + id, optionDelete).then(r => {if ( r.status === 200){
-      swal("Exito", "Producto eliminado satisfactoriamente", "success")} else swal("Error", "Ha ocurrido un error inesperado", "error")
+      swal("Exito", "Producto eliminado satisfactoriamente", "success");fetch("http://localhost:8080/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))} else swal("Error", "Ha ocurrido un error inesperado", "error")
     })
   }
 
@@ -38,7 +38,7 @@ export default function AdminVerProductos() {
 
   useEffect(() => {
     fetch("http://localhost:8080/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))
-  }, [AllProducts])
+  }, [])
 
 
   return (
@@ -49,10 +49,14 @@ export default function AdminVerProductos() {
         AllProducts.length > 0 && AllProducts.map(producto => {
           return (
             <div>
+              <div style={{display:'flex',gap:'20px'}}>
+
               <button onClick={() => deleteProduct(producto._id)} >X</button>
               <button onClick={() => {setEstado("modificar");setProductoAModificar(producto)}}>Modificar</button>
+              </div>
               <Card
                 key={producto._id}
+                id={producto._id}
                   titulo={producto.titulo}
                   precio={producto.precio}
                   valorUnidad={producto.valorunidad}
@@ -63,7 +67,7 @@ export default function AdminVerProductos() {
               </div>
           )
         })}
-       { estado === "modificar" && <ModificarProducto productoAModificar={productoAModificar}></ModificarProducto>}
+       { estado === "modificar" && <ModificarProductoPage productoAModificar={productoAModificar}></ModificarProductoPage>}
     </div>
   )
 }

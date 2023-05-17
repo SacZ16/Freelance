@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import './Perfil.css'
 
 export default function ModificarProducto({productoAModificar}) {
-
-  const navigate = useNavigate()
     
+    const navigate = useNavigate()
+    const [categories,setCategories] = useState([])
+  
+  console.log("modificar",categories)
     const optionGet = {
         method: "GET",
         headers: {
@@ -19,10 +21,8 @@ export default function ModificarProducto({productoAModificar}) {
       };
 
     useEffect(() => {
-        fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> setCategories(e))
+        fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategories(e);setProducto({...producto,categorianame:e.filter(res=>res._id ===productoAModificar.categoria)[0].nombre})})
     }, [])
-    console.log("modificar",productoAModificar)
-    console.log("modificar",productoAModificar)
     const [productocaracteristicas, setProductocaracteristicas] = useState({
             tipo:productoAModificar.caracteristicas.tipo,
             origen:productoAModificar.caracteristicas.origen,
@@ -41,11 +41,12 @@ export default function ModificarProducto({productoAModificar}) {
         imagenes:productoAModificar.imagenes,
         descripcion:productoAModificar.descripcion,
         stock:productoAModificar.stock,
-        categoria:productoAModificar.categoria._id,
+        categoria:productoAModificar.categoria,
         categorianame:"-",
         caracteristicas:""
     })
     const onSumit =()=>{
+      console.log("hola")
       let listoproducto= producto
       listoproducto.caracteristicas=productocaracteristicas
       listoproducto.imagenes=imagenes
@@ -66,7 +67,7 @@ export default function ModificarProducto({productoAModificar}) {
         ) return swal("Advertencia",
         "Por favor completa todos los campos",
         "warning")
-      fetch("http://localhost:8080/product/add", {
+      fetch("http://localhost:8080/product/update/" + productoAModificar._id, {
       method: "PUT",
       body: JSON.stringify(listoproducto),
       headers: {
@@ -76,56 +77,38 @@ export default function ModificarProducto({productoAModificar}) {
         authorization:`Barrer ${localStorage.getItem("Upmn")}`,
       },
     }).then(r => { if (r.status === 200 ){
-      swal("Listo","Producto agregado correctamente", "success")
-       setProducto({
-      titulo:"",
-        precio:0,
-        valorunidad:0,
-        unidades:0,
-        imagenes:"",
-        categoria:"",
-        categorianame:"-",
-        caracteristicas:""
-    })
-    setProductocaracteristicas({
-      tipo:"",
-      origen:"",
-      provincia:"",
-      localidad:"",
-      altura:"",
-      guarda:"",
-      uva:"",
-      cosecha:""
-    })} else  swal("Error", "Ha occurrido un error inesperado", "error")})
+      swal("Listo","Producto modificado correctamente", "success")
+       
+    } else  swal("Error", "Ha occurrido un error inesperado", "error")})
     }
-    const [imagenes, setImagenes] = useState([])
+    const [imagenes, setImagenes] = useState(productoAModificar.imagenes)
     const [loading,setLoading] = useState(true)
-    const [categories,setCategories] = useState([])
-    let ima=[]
-    const handleimage = useCallback(async (e) => {        
+    const handleimage = async (e) => {        
         setLoading(true)
         const files = e.target.files;
         const data = new FormData();
         data.append("file", files[0]);
         data.append("upload_preset", "vayssr63");
         const res = await fetch(
-          "https://api.cloudinary.com/v1_1/dva6dmzv3/image/upload",
-          {
-            method: "POST",
-            body: data,
-          }
+            "https://api.cloudinary.com/v1_1/dva6dmzv3/image/upload",
+            {
+                method: "POST",
+                body: data,
+            }
         );
         const file = await res.json();
         console.log(file.secure_url)
+        let ima=imagenes
         ima.push(file.secure_url)
         setImagenes(ima)
         console.log({imagenes})
         setLoading(false)
-      }, []);
+      };
   return (
     <div style={{display:'flex'}}>
       <div>
-
+      <div style={{width:'max-content',height:'max-content'}}>
+        <div style={{background:'transparent',position:'absolute',zIndex:'10000000000',width:'326px',height:'472px'}}></div>
         <Card
                   titulo={producto.titulo}
                   precio={producto.precio}
@@ -134,9 +117,13 @@ export default function ModificarProducto({productoAModificar}) {
                   categoria={producto.categorianame}
                   imagen={imagenes[0]}
                   />
+                  </div>
                {
                  imagenes.map(e=>{return(
+                    <div style={{display:'flex',flexDirection:'column',border:'1px solid black',borderRadius:'10px',marginTop:'10px',alignItems:'center'}}>
+                    <button style={{width:'100%'}} onClick={()=>{setImagenes(imagenes.filter(er=>er!==e))}}>Borrar</button>
                    <img src={e} alt="not found" width={225} height={225}/>
+                    </div>
                    )})
                   }
                   </div>

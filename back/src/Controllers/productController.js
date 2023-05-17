@@ -78,10 +78,10 @@ const getProducts = async (req, res) => {
       const updateProduct = await Product.findByIdAndUpdate(id, req.body, {
         new: true,
       });
-      if (!updateProduct) return res.json({ msg: "Product not found" });
-      return res.json({ msg: "Product Update" });
+      if (!updateProduct) return res.status(405).json({ msg: "Product not found" });
+      return res.status(200).json({ msg: "Product Update" });
     } catch (e) {
-      return res.json({ msg: `Error 404 - ${e}` });
+      return res.status(404).json({ msg: `Error 404 - ${e}` });
     }
   };
 

@@ -198,9 +198,10 @@ const [loading, setLoading] = useState(false)
                
                 </section>
                 <button onClick={()=>guardarelegido()}>Guardar</button>
-            <div>
+            <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-evenly'}}>
             {elegidos&& elegidos.reverse().slice(0,4).map((producto, index) => {
             return <Card key={producto._id}
+            id={producto._id}
             titulo={producto.titulo}
             precio={producto.precio}
             valorUnidad={producto.valorunidad}
@@ -259,6 +260,7 @@ const [loading, setLoading] = useState(false)
            
 
                 {destacadoModificado&&<Card key={destacadoModificado.producto1._id}
+                id={destacadoModificado.producto1._id}
                 titulo={destacadoModificado.producto1.titulo}
                 precio={destacadoModificado.producto1.precio}
                 valorUnidad={destacadoModificado.producto1.valorunidad}
@@ -266,6 +268,7 @@ const [loading, setLoading] = useState(false)
                 categoria={destacadoModificado.producto1.categoria.nombre}
                 imagen={destacadoModificado.producto1.imagenes[0]}/>}
                 {destacadoModificado&&<Card key={destacadoModificado.producto2._id}
+                id={destacadoModificado.producto2._id}
                 titulo={destacadoModificado.producto2.titulo}
                 precio={destacadoModificado.producto2.precio}
                 valorUnidad={destacadoModificado.producto2.valorunidad}
@@ -273,6 +276,7 @@ const [loading, setLoading] = useState(false)
                 categoria={destacadoModificado.producto2.categoria.nombre}
                 imagen={destacadoModificado.producto2.imagenes[0]}/>}
                 {destacadoModificado&&<Card key={destacadoModificado.producto3._id}
+                id={destacadoModificado.producto3._id}
                 titulo={destacadoModificado.producto3.titulo}
                 precio={destacadoModificado.producto3.precio}
                 valorUnidad={destacadoModificado.producto3.valorunidad}
@@ -280,6 +284,7 @@ const [loading, setLoading] = useState(false)
                 categoria={destacadoModificado.producto3.categoria.nombre}
                 imagen={destacadoModificado.producto3.imagenes[0]}/>}
                 {destacadoModificado&&<Card key={destacadoModificado.producto4._id}
+                id={destacadoModificado.producto4._id}
                 titulo={destacadoModificado.producto4.titulo}
                 precio={destacadoModificado.producto4.precio}
                 valorUnidad={destacadoModificado.producto4.valorunidad}

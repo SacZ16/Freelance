@@ -121,7 +121,8 @@ export default function AdminSubirProducto() {
   return (
     <div style={{display:'flex'}}>
       <div>
-
+    <div style={{width:'max-content',height:'max-content'}}>
+        <div style={{background:'transparent',position:'absolute',zIndex:'10000000000',width:'326px',height:'472px'}}></div>
         <Card
                   titulo={producto.titulo}
                   precio={producto.precio}
@@ -130,6 +131,7 @@ export default function AdminSubirProducto() {
                   categoria={producto.categorianame}
                   imagen={imagenes[0]}
                   />
+                  </div>
                {
                  imagenes.map(e=>{return(
                    <img src={e} alt="not found" width={225} height={225}/>
