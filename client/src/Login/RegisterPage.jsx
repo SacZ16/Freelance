@@ -6,7 +6,7 @@ import swal from "sweetalert"
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css"
 
-export default function RegisterPage({setActualizar,actualizar}) {
+export default function RegisterPage({setActualizar,actualizar, usuario}) {
   const navigate = useNavigate();
   const [formulario, setFormulario] = useState({
     nombre:"",
@@ -83,7 +83,7 @@ export default function RegisterPage({setActualizar,actualizar}) {
       <div className="ventaporcaja-login">
        <p className="ventaporcaja-letra-login">VENTA POR CAJA EXCLUSIVAMENTE</p>
         </div>
-      <Navbar />
+      <Navbar usuario={usuario}/>
       <div className="fondo-login-sub-login">
         <div className="login2-contenedor-login"></div>
         <div className="login-contenedor-login">

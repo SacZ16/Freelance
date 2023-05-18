@@ -137,7 +137,7 @@ const [actualizardetail, setActualizardetail] = useState(false)
           VENTA POR CAJA EXCLUSIVAMENTE
         </p>
       </div>
-      <Navbar />
+      <Navbar usuario={usuario}  actualizar={actualizar} setActualizar={setActualizar}/>
       <div style={{ width: "95vw", margin: "auto" }}>
         <section style={{ display: "flex" }}>
           <section style={{ width: "50vw", height: "80vh" }}>

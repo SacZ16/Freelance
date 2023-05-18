@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 import CarritoCard from "../components/carrito/CarritoCard";
 
-export default function Navbar() {
+export default function Navbar({usuario, actualizar, setActualizar}) {
   const [categorias, setCategorias] = useState([])
   const [estadoCarrito, setEstadoCarrito] = useState(false)
 
@@ -27,7 +27,7 @@ export default function Navbar() {
   
   return (
     <div style={{width:'97vw',padding:'10px 10px'}}>
-      {estadoCarrito&&<CarritoCard setEstadoCarrito={setEstadoCarrito}></CarritoCard>}
+      {estadoCarrito&&<CarritoCard actualizar={actualizar} setActualizar={setActualizar} usuario={usuario} setEstadoCarrito={setEstadoCarrito}></CarritoCard>}
       <main className="container-navbar">
         <Link to="/">
           <img src={logo} alt="pmn" />
@@ -48,7 +48,7 @@ export default function Navbar() {
             <>
             <Link to="/perfil" style={{textDecoration:'none'}}> <img className="img-svg-navbar" src={profile} alt="profile" />
           </Link>
-            <img style={{position:'relative',top:'-1.8px'}} onClick={()=>{setEstadoCarrito(true);document.body.classList.add('no-scroll')}} src={car} alt="car" />
+            <img style={{position:'relative',top:'-1.8px',cursor:'pointer'}} onClick={()=>{setEstadoCarrito(true);document.body.classList.add('no-scroll')}} src={car} alt="car" />
             </>            
             :
             <>

@@ -27,7 +27,7 @@ console.log({usuario})
     <div className="ventaporcaja-login">
    <p className="ventaporcaja-letra-login">VENTA POR CAJA EXCLUSIVAMENTE</p>
     </div>
-  <Navbar />
+  <Navbar usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>
   <br />
 {
 !usuario?

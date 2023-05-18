@@ -38,7 +38,7 @@ export default function Filtro({usuarioJWT,setActualizar,actualizar}) {
       <div className="ventaporcaja-home">
         <p className="ventaporcaja-letra-home">VENTA POR CAJA EXCLUSIVAMENTE</p>
       </div>
-      <Navbar />
+      <Navbar usuario={usuarioJWT}  actualizar={actualizar} setActualizar={setActualizar}/>
       <section
         style={{ padding: "0px 20px", maxWidth: "95vw", margin: "auto" }}
       >

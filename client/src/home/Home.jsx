@@ -46,7 +46,7 @@ export default function Home({usuarioJWT,setActualizar,actualizar}) {
       <div className="ventaporcaja-home">
        <p className="ventaporcaja-letra-home">VENTA POR CAJA EXCLUSIVAMENTE</p>
         </div>
-      <Navbar />
+      <Navbar usuario={usuarioJWT}  actualizar={actualizar} setActualizar={setActualizar}/>
       {home.slice&&<Carousel width={"90vw"} height={"50vh"} fix={false} array={home?.slice}/>}
       <div className="detailenvios-media-home">
       <DetailEnvios  width={"90vw"}/>

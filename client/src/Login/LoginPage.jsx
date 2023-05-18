@@ -6,7 +6,7 @@ import swal from "sweetalert"
 import DetailEnvios from '../components/detailEnvios/DetailEnvios'
 import { useNavigate, Link } from "react-router-dom";
 
-export default function LoginPage({setActualizar,actualizar}) {
+export default function LoginPage({ usuario, setActualizar,actualizar}) {
   const navigate = useNavigate();
   const [formulario, setFormulario] = useState({
     email:"",
@@ -82,7 +82,7 @@ export default function LoginPage({setActualizar,actualizar}) {
         <div className="ventaporcaja-login">
        <p className="ventaporcaja-letra-login">VENTA POR CAJA EXCLUSIVAMENTE</p>
         </div>
-      <Navbar />
+      <Navbar usuario={usuario}/>
       <div style={{display:'flex',justifyContent:'center'}}>
         <div style={{width:'40%',padding:'30px'}}>
             <h1 className='login1-h1'>Bienvenido de vuelta!</h1>

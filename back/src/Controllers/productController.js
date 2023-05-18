@@ -2,7 +2,7 @@ const Product = require("../models/Producto.js");
 
 const getProducts = async (req, res) => {
     try {
-      const products = await Product.find();
+      const products = await Product.find().populate("categoria");
       return res.json(products);
     } catch (e) {
       return res.json({ msg: `Error 404 - ${e}` });

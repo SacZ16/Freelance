@@ -10,6 +10,7 @@ import Perfil from "./Perfil/Perfil";
 import RegisterPage from "./Login/RegisterPage";
 import { useEffect,useState } from "react";
 import { useJwt } from "react-jwt";
+import Payment from "./components/payment/Payment";
 
 
 
@@ -45,6 +46,7 @@ function App() {
       <Route path="/perfil" element={<Perfil usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/detalle/:id" element={<Detail usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/cpm" element={<Compra/>}/>
+      <Route path="/payment" element={<Payment usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
     </Routes>
     </BrowserRouter>
   )
