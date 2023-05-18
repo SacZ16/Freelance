@@ -5,7 +5,7 @@ import Navbar from "../navbar/Navbar";
 import { useState, useEffect } from "react";
 import { Loading } from "../components/loading/Loading";
 
-export default function Filtro() {
+export default function Filtro({usuarioJWT,setActualizar,actualizar}) {
   const [productos, setProductos] = useState("");
 
   const filtrar = useParams();
@@ -49,6 +49,10 @@ export default function Filtro() {
               return (
                 <Card
                   key={producto._id}
+                  usuarioJWTFAV={usuarioJWT?usuarioJWT.favoritos.map(e=>e._id).includes(producto._id):false}
+                  usuario={usuarioJWT?usuarioJWT:"login"}
+                  usuarioJWTCAR={usuarioJWT?usuarioJWT.carrito.map(e=>e._id).includes(producto._id):false}
+                  actualizar={actualizar} setActualizar={setActualizar}
                   id={producto._id}
                   titulo={producto.titulo}
                   precio={producto.precio}

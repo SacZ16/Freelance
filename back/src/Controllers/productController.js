@@ -12,6 +12,7 @@ const getProducts = async (req, res) => {
   const getRandomProducts = async (req, res) => {
     try {
       const products = await Product.aggregate([{$sample: {size: 4}}]);
+      await Product.populate(products,{path:"categoria"})
       return res.json(products);
     } catch (e) {
       return res.json({ msg: `Error 404 - ${e}` });

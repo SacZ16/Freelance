@@ -39,7 +39,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home usuarioJWT={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
-      <Route path="/:filtro" element={<Filtro/>}/>
+      <Route path="/:filtro" element={<Filtro usuarioJWT={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/registro" element={<RegisterPage actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/login" element={<LoginPage actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/perfil" element={<Perfil usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>

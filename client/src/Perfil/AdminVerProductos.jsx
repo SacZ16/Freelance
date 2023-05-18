@@ -42,18 +42,19 @@ export default function AdminVerProductos() {
 
 
   return (
-    <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-evenly'}}>
+    <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-evenly',gap:'20px'}}>
       {
         estado === "normal" &&
         
         AllProducts.length > 0 && AllProducts.map(producto => {
           return (
-            <div>
-              <div style={{display:'flex',gap:'20px'}}>
+            <div style={{padding:'10px',border:'1px solid black',borderRadius:'10px'}}>
+              <div style={{display:'flex',justifyContent:'space-around'}}>
 
               <button onClick={() => deleteProduct(producto._id)} >X</button>
               <button onClick={() => {setEstado("modificar");setProductoAModificar(producto)}}>Modificar</button>
               </div>
+              <hr />
               <Card
                 key={producto._id}
                 id={producto._id}

@@ -2,6 +2,8 @@
     position: relative;
     width: 326px;
     height: 326px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .img-card{
     position: relative;

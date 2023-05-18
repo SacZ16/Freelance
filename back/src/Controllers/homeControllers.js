@@ -3,7 +3,7 @@ const Home = require("../models/Home.js");
 
 const getHome = async(req, res) =>{
     try{
-        const home = await Home.find().populate("elegidos").populate("destacados");
+        const home = await Home.find().populate("elegidos").populate({path:"destacados",populate:{path:"categoria"}});
         return res.status(200).json(home)
     }catch(e){
         return res.json({ msg: `Error 404 - ${e}` });

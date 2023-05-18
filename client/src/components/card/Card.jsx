@@ -88,8 +88,9 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
   
 // console.log("favo",usuarioJWTFAV,titulo)
 // console.log("carro",usuarioJWTCAR,titulo)
+console.log({categoria})
   return (
-<main  style={{background:'white',width:'max-content'}}>
+<main  style={{background:'white',width:'max-content',borderRadius:'10px'}}>
     <section className="container-section1-card">
         <section className="container-section1-icons-card">
           {!usuarioJWTFAV &&<img

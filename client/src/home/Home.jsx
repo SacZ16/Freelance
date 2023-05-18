@@ -40,7 +40,7 @@ export default function Home({usuarioJWT,setActualizar,actualizar}) {
     fetch("http://localhost:4000/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log(e)})
   }, [])
 
-  
+  console.log("home.destacados",home.destacados)
   return (
     <main>
       <div className="ventaporcaja-home">
