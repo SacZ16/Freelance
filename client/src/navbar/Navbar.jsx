@@ -48,7 +48,7 @@ export default function Navbar() {
             <>
             <Link to="/perfil" style={{textDecoration:'none'}}> <img className="img-svg-navbar" src={profile} alt="profile" />
           </Link>
-            <img onClick={()=>{setEstadoCarrito(true);document.body.classList.add('no-scroll')}} src={car} alt="car" />
+            <img style={{position:'relative',top:'-1.8px'}} onClick={()=>{setEstadoCarrito(true);document.body.classList.add('no-scroll')}} src={car} alt="car" />
             </>            
             :
             <>
