@@ -11,6 +11,8 @@ const {compare,encrypt, tokenSign} =require("./Controllers/helpers");
 
 
 const User = require("./models/User");
+const Product = require("./models/Producto.js")
+const Compras = require("./models/Compras.js")
 const { deleteProduct, getProduct, getProducts, postProduct, updateProduct, getFilteredsProducts, getRandomProducts } = require("./Controllers/productController");
 const { addProductToCart, removeFromCart } = require("./Controllers/cartControllers");
 const { getCategories, postCategory, updateCategory, deleteCategory } = require("./Controllers/categoriaController");
@@ -64,10 +66,43 @@ router.delete("/category/delete/:id", deleteCategory)
 router.post("/process_payment",function(req,res){
   mercadopago.configurations.setAccessToken("TEST-97172942281878-043019-3f4d6d2005fe2ab127f2338b10e40ce7-320615701");
 
-  mercadopago.payment.save(req.body)
+  const {formData,productos,userid}=req.body
+  // console.log(formData,productos)
+  mercadopago.payment.save(formData)
     .then(function(response) {
       const { status, status_detail, id } = response.body;
-      res.status(response.status).json({ status, status_detail, id });
+      res.status(response.status).json({ status, status_detail, id,todo:response.body,productos:productos });
+      if(status==="approved"){
+        productos.map(async(e) => {
+        let productoe = await Product.findById(e.id)
+        productoe.stock = productoe.stock-e.stock
+        productoe.save()
+        })   
+      }
+      //
+
+      let tresLetras= ""
+      const letras =  () => {
+              let abc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"]
+              let randomNum = 0
+              for(let i = 0; i < 4; i++){
+                randomNum = Math.floor(Math.random()*35)
+                tresLetras = tresLetras + abc[randomNum]
+      
+              }
+              console.log("soy letras",tresLetras)
+              return tresLetras
+            }
+      letras()
+      const newCompras = new Compras({
+        pedido:(`${JSON.stringify(new Date()).slice(6,8)}${JSON.stringify(new Date()).slice(9,11)}00${JSON.stringify(new Date()).slice(12,14)}${letras()}${JSON.stringify(new Date()).slice(15,17)}${JSON.stringify(new Date()).slice(18,20)}${JSON.stringify(new Date()).slice(-5)})}`),
+        productos:productos,
+        total:(productos.map(e=>(Number((e.precio+"").replace('.', '')))).reduce((a, b) => a + b, 0)),
+        codigoEnvio:"",
+        comprador:userid
+
+      });
+      newCompras.save();
     })
     .catch(function(error) {
       console.error(error);

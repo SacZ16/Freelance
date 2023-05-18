@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import Mp from './Mp'
 
 export default function Payment({usuario, actualizar, setActualizar}) {
     
     const [cart, setCart] = useState([])
     const [carritoAComprar,setCarritoAComprar]=useState([])
     const [loading, setloading] = useState(false)
+    const [pagar, setPagar] = useState(false)
 
     const optionGet = {
         method: "GET",
@@ -30,14 +32,19 @@ export default function Payment({usuario, actualizar, setActualizar}) {
       console.log({carritoAComprar})
     }, [carritoAComprar])
     
-const nextStock=(estock,index)=>{
-    setloading(true)
+const nextStock=(estock,index,eprecio)=>{
+    setloading(!loading)
     let temp=carritoAComprar
     temp[index]={...temp[index],stock:estock+1}
+    temp[index]={...temp[index],precio:Number((eprecio+"").replace('.', ''))*(estock+1)}
     setCarritoAComprar(temp)
-    setloading(false)
-    console.log({carritoAComprar})
-    console.log(temp,index )
+}
+const prevStock=(estock,index,eprecio)=>{
+    setloading(!loading)
+    let temp=carritoAComprar
+    temp[index]={...temp[index],stock:estock-1}
+    temp[index]={...temp[index],precio:Number((eprecio+"").replace('.', ''))*(estock-1)}
+    setCarritoAComprar(temp)
 }
 
     // Traer carrito✅
@@ -56,16 +63,24 @@ const nextStock=(estock,index)=>{
                 carritoAComprar?.map(((e,index) => {
                     return (
                         <div>
-                        <h3>{carritoAComprar[index].titulo}</h3>
-                        <p>{carritoAComprar[index].precio}</p>
-                        <img src={carritoAComprar[index].imagen} alt='not found' height={120} width={90}></img>
-                        <button>-</button>{`${loading}`}{loading?carritoAComprar[index].stock +"t":carritoAComprar[index].stock+ "y"}<button onClick={()=>nextStock(carritoAComprar[index].stock,index)} >+</button>
+                        <h3>{e.titulo}</h3>
+                        <p>{e.precio.toLocaleString("es-AR", {
+                        currency: "ARS",
+                        style: "currency",
+                      })}</p>
+                        <img src={e.imagen} alt='not found' height={120} width={90}></img>
+                        <button disabled={e.stock<1} onClick={()=>prevStock(e.stock,index,cart[index].precio)}>-</button><span>{e.stock}</span><button onClick={()=>nextStock(e.stock,index,cart[index].precio)} >+</button>
                         </div>
                     )
                 }))
             }
         </div>
-        <button onClick={()=>console.log(carritoAComprar)}>sda</button>
+        total:{carritoAComprar.length>0&&carritoAComprar?.map(e=>(Number((e.precio+"").replace('.', '')))).reduce((a, b) => a + b, 0).toLocaleString("es-AR", {
+                        currency: "ARS",
+                        style: "currency",
+                      })}
+        <button onClick={()=>setPagar(true)}>Endeudarse</button>
+        {pagar&&<Mp usuario={usuario} productos={carritoAComprar} amount={carritoAComprar?.map(e=>(Number((e.precio+"").replace('.', '')))).reduce((a, b) => a + b, 0)}></Mp>}
     </div>
   )
 }
