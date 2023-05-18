@@ -142,10 +142,28 @@ padding-left: 20px;
     position: relative;
     cursor: pointer;
 }
+
+
 .section-detalle-op-detail span{
     position: absolute;
     right: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.texto_expandir{
+    position: relative;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+.btn-expandir{
+    
+}
+
+.abrir_cerrar{
+    overflow: hidden;
+    max-height: 1000px;
+    transition: all 1s ease-in;
 }

@@ -33,7 +33,7 @@ export default function LoginPage({setActualizar,actualizar}) {
          "La contraseña debe contener al menos 8 carácteres",
          "warning")      
        }
-      fetch("http://localhost:8080/user/login", {
+      fetch("http://localhost:4000/user/login", {
         method: "POST",
         body: JSON.stringify({
           email: formulario.email,

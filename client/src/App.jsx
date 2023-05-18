@@ -30,7 +30,7 @@ function App() {
   };
 
   useEffect(() => {
-    if(decodedToken&&localStorage.getItem("Upmn"))fetch("http://localhost:8080/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
+    if(decodedToken&&localStorage.getItem("Upmn"))fetch("http://localhost:4000/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
     if(!localStorage.getItem("Upmn"))setUsuario(null)
   }, [decodedToken,actualizar,localStorage.getItem("Upmn")])
 
@@ -43,7 +43,7 @@ function App() {
       <Route path="/registro" element={<RegisterPage actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/login" element={<LoginPage actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/perfil" element={<Perfil usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
-      <Route path="/detalle/:id" element={<Detail/>}/>
+      <Route path="/detalle/:id" element={<Detail usuario={usuario} actualizar={actualizar} setActualizar={setActualizar}/>}/>
       <Route path="/cpm" element={<Compra/>}/>
     </Routes>
     </BrowserRouter>

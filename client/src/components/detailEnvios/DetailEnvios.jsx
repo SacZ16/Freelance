@@ -17,7 +17,7 @@ export default function DetailEnvios({width}) {
         </div>
         <div className="div-detailenvios">
           <img src={free} alt="free"/>
-          <p className="letra-envios-detailenvios" style={{margin:'0'}}>ENVIOS GRATIS EN CABA CON COMPRAS MAYORES A 8080</p>
+          <p className="letra-envios-detailenvios" style={{margin:'0'}}>ENVIOS GRATIS EN CABA CON COMPRAS MAYORES A 4000</p>
           </div>
     </section>
   )

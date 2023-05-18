@@ -40,7 +40,7 @@ export default function RegisterPage({setActualizar,actualizar}) {
        "La contraseña debe contener al menos 8 carácteres",
        "warning")      
      }
-    fetch("http://localhost:8080/user/register", {
+    fetch("http://localhost:4000/user/register", {
       method: "POST",
       body: JSON.stringify({
         username: formulario.nombre,

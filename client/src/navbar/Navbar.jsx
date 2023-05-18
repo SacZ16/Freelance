@@ -22,17 +22,17 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
+    fetch("http://localhost:4000/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
   }, [])
   
   return (
-    <div>
+    <div style={{width:'97vw',padding:'10px 10px'}}>
       {estadoCarrito&&<CarritoCard setEstadoCarrito={setEstadoCarrito}></CarritoCard>}
       <main className="container-navbar">
         <Link to="/">
           <img src={logo} alt="pmn" />
         </Link>
-        <section className="section-navbar1">
+        <section className="section-navbar1" style={{minWidth:'calc(100vw - 483px)',justifyContent:'center',display:'flex',gap:'20px'}}>
           {categorias?.map(e=>{
             return (
               <Link to={`/${e.nombre.toLowerCase()}`} key={e._id}>

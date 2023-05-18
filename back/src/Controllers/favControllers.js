@@ -9,10 +9,10 @@ const addProductToFav = async (req, res) => {
         const user = await User.findById(idUser);
 
         if(!product){
-            return res.status(400).json({msg: "Product not found"});
+            return res.status(402).json({msg: "Product not found"});
         }
         if(!user){
-            return res.status(400).json({msg: "User not found"});
+            return res.status(401).json({msg: "User not found"});
         }
         if(user.favoritos.filter(e => (e+'') === idProduct).length > 0){
             return res.status(405).json({msg: "This product is already in favs"})
@@ -37,10 +37,10 @@ const removeFromFav = async (req, res) => {
         const user = await User.findById(idUser);
 
         if(!product){
-            return res.status(400).json({msg: "Product not found"});
+            return res.status(403).json({msg: "Product not found"});
         }
         if(!user){
-            return res.status(400).json({msg: "User not found"});
+            return res.status(401).json({msg: "User not found"});
         }
         const updatedFav = user.favoritos.filter(e => (e+'') !== idProduct);
         console.log(updatedFav)

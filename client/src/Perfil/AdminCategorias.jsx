@@ -35,13 +35,13 @@ export default function AdminCategorias(){
       })
 
       useEffect(() => {
-        fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> setCategorias(e))
+        fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> setCategorias(e))
       }, [])
 
       const onSumit =()=>{
         let nCategoria= newCategory
         console.log(nCategoria)
-        fetch("http://localhost:8080/categories/add", {
+        fetch("http://localhost:4000/categories/add", {
         method: "POST",
         body: JSON.stringify(nCategoria),
         headers: {
@@ -50,7 +50,7 @@ export default function AdminCategorias(){
           Origin: "",
           authorization:`Barrer ${localStorage.getItem("Upmn")}`,
         },
-      }).then(r => r.status === 200 ? fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
+      }).then(r => r.status === 200 ? fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
       setNewCategory({
         nombre: ""
       })
@@ -63,7 +63,7 @@ export default function AdminCategorias(){
 
     const onPut = () =>{
         let nCategoria = categoria
-        fetch("http://localhost:8080/category/update",{
+        fetch("http://localhost:4000/category/update",{
             method: "PUT",
             body: JSON.stringify({id: nCategoria.id, nombre: nCategoria.nombre}),
             headers: {
@@ -72,14 +72,14 @@ export default function AdminCategorias(){
               Origin: "",
               authorization:`Barrer ${localStorage.getItem("Upmn")}`,
             },
-          }).then(r => r.status === 200 ? fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
+          }).then(r => r.status === 200 ? fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
           swal("Listo",
           "Categoria modificada correctamente",
           "success")}):swal("Error", "Ha ocurrido un error inesperado", "error"))
     }
 
     const handleDelete = (_id) => {
-        fetch("http://localhost:8080/category/delete/"+ _id, optionDelete).then(r => r.status === 200 ? fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
+        fetch("http://localhost:4000/category/delete/"+ _id, optionDelete).then(r => r.status === 200 ? fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> {setCategorias(e); setShowC("lista")
         swal("Listo",
         "Categoria eliminada correctamente",
         "success")}): swal("Error", "Ha occurido un error inesperado", "error"))

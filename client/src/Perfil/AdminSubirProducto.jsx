@@ -19,7 +19,7 @@ export default function AdminSubirProducto() {
       };
 
     useEffect(() => {
-        fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=> setCategories(e))
+        fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> setCategories(e))
     }, [])
     const [productocaracteristicas, setProductocaracteristicas] = useState({
             tipo:"",
@@ -62,7 +62,7 @@ export default function AdminSubirProducto() {
         ) return swal("Advertencia",
         "Por favor completa todos los campos",
         "warning")
-      fetch("http://localhost:8080/product/add", {
+      fetch("http://localhost:4000/product/add", {
       method: "POST",
       body: JSON.stringify(listoproducto),
       headers: {
@@ -166,7 +166,7 @@ export default function AdminSubirProducto() {
                </section>
                <section>
                <label>descripcion</label>
-               <input onChange={e=>setProducto({...producto,descripcion:e.target.value})} value={producto.descripcion} type='text' name="descripcion" ></input>
+               <textarea rows="3" onChange={e=>setProducto({...producto,descripcion:e.target.value})} value={producto.descripcion} type='text' name="descripcion" ></textarea>
                </section>
                <section>
                <label>categoria</label>

@@ -9,6 +9,15 @@ const getProducts = async (req, res) => {
     }
   };
 
+  const getRandomProducts = async (req, res) => {
+    try {
+      const products = await Product.aggregate([{$sample: {size: 4}}]);
+      return res.json(products);
+    } catch (e) {
+      return res.json({ msg: `Error 404 - ${e}` });
+    }
+  };
+
   const getProduct = async (req, res) => {
     const { id } = req.params;
   
@@ -85,4 +94,4 @@ const getProducts = async (req, res) => {
     }
   };
 
-  module.exports = {getProducts, getProduct, postProduct, deleteProduct, updateProduct, getFilteredsProducts}
+  module.exports = {getProducts, getProduct, postProduct, deleteProduct, updateProduct, getFilteredsProducts, getRandomProducts}

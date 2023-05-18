@@ -18,6 +18,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/",indexRouter)
 
-server.listen(8080, () => {
-    console.log(`Server on port 8080`);
+server.listen(4000, () => {
+    console.log(`Server on port 4000`);
   });

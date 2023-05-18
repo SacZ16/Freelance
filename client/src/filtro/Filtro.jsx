@@ -22,7 +22,7 @@ export default function Filtro() {
   useEffect(() => {
     if (filtrar.filtro)
       fetch(
-        "http://localhost:8080/products/filter/" + filtrar.filtro,
+        "http://localhost:4000/products/filter/" + filtrar.filtro,
         optionGet
       )
         .then(async(r) =>{

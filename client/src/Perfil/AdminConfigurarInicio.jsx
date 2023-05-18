@@ -34,7 +34,7 @@ const [loading, setLoading] = useState(false)
   useEffect(() => {
     if (categoriaSeleccionada?.nombre)
       fetch(
-        "http://localhost:8080/products/filter/" + categoriaSeleccionada.nombre,
+        "http://localhost:4000/products/filter/" + categoriaSeleccionada.nombre,
         optionGet
       )
         .then(async(r) =>{
@@ -47,9 +47,9 @@ const [loading, setLoading] = useState(false)
     console.log("ayuda",categoriaSeleccionada)
   }, [categoriaSeleccionada]);
   useEffect(() => {
-    fetch("http://localhost:8080/products", optionGet).then(r => r.json()).then(r => {setAllProducts(r)})
-    fetch("http://localhost:8080/categories", optionGet).then(r => r.json()).then(e=>{setCategories(e)})
-    fetch("http://localhost:8080/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log({e});setDestacadoModificado({producto1:e[0].destacados[0],producto2:e[0].destacados[1],producto3:e[0].destacados[2],producto4:e[0].destacados[3]});setPostersModificado(e[0].posters);setSliceModificado(e[0].slice);setCategoriaSeleccionada({id:e[0].elegidos._id,nombre:e[0].elegidos.nombre})})
+    fetch("http://localhost:4000/products", optionGet).then(r => r.json()).then(r => {setAllProducts(r)})
+    fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=>{setCategories(e)})
+    fetch("http://localhost:4000/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log({e});setDestacadoModificado({producto1:e[0].destacados[0],producto2:e[0].destacados[1],producto3:e[0].destacados[2],producto4:e[0].destacados[3]});setPostersModificado(e[0].posters);setSliceModificado(e[0].slice);setCategoriaSeleccionada({id:e[0].elegidos._id,nombre:e[0].elegidos.nombre})})
   }, [])
   const handleimage = async (e,parametro,lugar) => {     
     setLoading(true)     
@@ -83,7 +83,7 @@ const [loading, setLoading] = useState(false)
   const guardardestacado=()=>{
     let destacadosmodificadolisto= [destacadoModificado.producto1._id,destacadoModificado.producto2._id,destacadoModificado.producto3._id,destacadoModificado.producto4._id]
     console.log("se manda esto",JSON.stringify({id:"64629306d7cc9a8b5880ab60",destacados:destacadosmodificadolisto}))
-    fetch("http://localhost:8080/home/destacados", {
+    fetch("http://localhost:4000/home/destacados", {
       method: "PUT",
       body: JSON.stringify({id:"64629306d7cc9a8b5880ab60",destacados:destacadosmodificadolisto}),
       headers: {
@@ -97,7 +97,7 @@ const [loading, setLoading] = useState(false)
 
   const guardarelegido=()=>{
     console.log(categoriaSeleccionada)
-    fetch("http://localhost:8080/home/elegidos", {
+    fetch("http://localhost:4000/home/elegidos", {
       method: "PUT",
       body: JSON.stringify({id:"64629306d7cc9a8b5880ab60",elegidos:categoriaSeleccionada.categoria}),
       headers: {
@@ -110,7 +110,7 @@ const [loading, setLoading] = useState(false)
   }
   const guardarSlice=()=>{
     console.log(sliceModificado)
-    fetch("http://localhost:8080/home/slice", {
+    fetch("http://localhost:4000/home/slice", {
       method: "PUT",
       body: JSON.stringify({id:"64629306d7cc9a8b5880ab60",slice:sliceModificado}),
       headers: {
@@ -123,7 +123,7 @@ const [loading, setLoading] = useState(false)
   }
   const guardarPosters=()=>{
     console.log(postersModificado)
-    fetch("http://localhost:8080/home/posters", {
+    fetch("http://localhost:4000/home/posters", {
       method: "PUT",
       body: JSON.stringify({id:"64629306d7cc9a8b5880ab60",posters:postersModificado}),
       headers: {

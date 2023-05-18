@@ -25,7 +25,7 @@ export default function Home({usuarioJWT,setActualizar,actualizar}) {
   useEffect(() => {
     if (home?.elegidos?.nombre)
       fetch(
-        "http://localhost:8080/products/filter/" + home.elegidos.nombre,
+        "http://localhost:4000/products/filter/" + home.elegidos.nombre,
         optionGet
       )
         .then(async(r) =>{
@@ -37,7 +37,7 @@ export default function Home({usuarioJWT,setActualizar,actualizar}) {
         })
   }, [home]);
   useEffect(() => {
-    fetch("http://localhost:8080/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log(e)})
+    fetch("http://localhost:4000/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log(e)})
   }, [])
 
   
