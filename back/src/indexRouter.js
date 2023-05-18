@@ -81,11 +81,11 @@ router.post("/process_payment",function(req,res){
       }
       //
 
-      let tresLetras= ""
       const letras =  () => {
+        let tresLetras= ""
               let abc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9","0"]
               let randomNum = 0
-              for(let i = 0; i < 4; i++){
+              for(let i = 0; i < 6; i++){
                 randomNum = Math.floor(Math.random()*35)
                 tresLetras = tresLetras + abc[randomNum]
       
@@ -95,7 +95,7 @@ router.post("/process_payment",function(req,res){
             }
       letras()
       const newCompras = new Compras({
-        pedido:(`${JSON.stringify(new Date()).slice(6,8)}${JSON.stringify(new Date()).slice(9,11)}00${JSON.stringify(new Date()).slice(12,14)}${letras()}${JSON.stringify(new Date()).slice(15,17)}${JSON.stringify(new Date()).slice(18,20)}${JSON.stringify(new Date()).slice(-5)})}`),
+        pedido:(`${JSON.stringify(new Date()).slice(6,8)}${letras()}${JSON.stringify(new Date()).slice(9,11)}`),
         productos:productos,
         total:(productos.map(e=>(Number((e.precio+"").replace('.', '')))).reduce((a, b) => a + b, 0)),
         codigoEnvio:"",

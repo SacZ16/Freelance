@@ -142,7 +142,10 @@ export default function CarritoCard({ setEstadoCarrito, usuario, actualizar, set
             })}
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Link to="/payment"><button>Comprar</button></Link>
+          <Link to="/payment"><button  onClick={() => {
+              setEstadoCarrito(false);
+              document.body.classList.remove("no-scroll");
+            }}>Comprar</button></Link>
         </div>
       </div>
     </div>
