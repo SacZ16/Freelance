@@ -40,7 +40,7 @@ export default function RegisterPage({setActualizar,actualizar, usuario}) {
        "La contraseña debe contener al menos 8 carácteres",
        "warning")      
      }
-    fetch("http://localhost:4000/user/register", {
+    fetch("https://free-q3yd.vercel.app/user/register", {
       method: "POST",
       body: JSON.stringify({
         username: formulario.nombre,

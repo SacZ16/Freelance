@@ -31,7 +31,7 @@ function App() {
   };
 
   useEffect(() => {
-    if(decodedToken&&localStorage.getItem("Upmn"))fetch("http://localhost:4000/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
+    if(decodedToken&&localStorage.getItem("Upmn"))fetch("https://free-q3yd.vercel.app/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
     if(!localStorage.getItem("Upmn"))setUsuario(null)
   }, [decodedToken,actualizar,localStorage.getItem("Upmn")])
 

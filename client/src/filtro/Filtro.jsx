@@ -22,7 +22,7 @@ export default function Filtro({usuarioJWT,setActualizar,actualizar}) {
   useEffect(() => {
     if (filtrar.filtro)
       fetch(
-        "http://localhost:4000/products/filter/" + filtrar.filtro,
+        "https://free-q3yd.vercel.app/products/filter/" + filtrar.filtro,
         optionGet
       )
         .then(async(r) =>{

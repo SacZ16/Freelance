@@ -21,7 +21,7 @@ export default function ModificarProducto({productoAModificar}) {
       };
 
     useEffect(() => {
-        fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> {setCategories(e);setProducto({...producto,categorianame:e.filter(res=>res._id ===productoAModificar.categoria)[0].nombre})})
+        fetch("https://free-q3yd.vercel.app/categories", optionGet).then(r => r.json()).then(e=> {setCategories(e);setProducto({...producto,categorianame:e.filter(res=>res._id ===productoAModificar.categoria)[0].nombre})})
     }, [])
     const [productocaracteristicas, setProductocaracteristicas] = useState({
             tipo:productoAModificar.caracteristicas.tipo,
@@ -67,7 +67,7 @@ export default function ModificarProducto({productoAModificar}) {
         ) return swal("Advertencia",
         "Por favor completa todos los campos",
         "warning")
-      fetch("http://localhost:4000/product/update/" + productoAModificar._id, {
+      fetch("https://free-q3yd.vercel.app/product/update/" + productoAModificar._id, {
       method: "PUT",
       body: JSON.stringify(listoproducto),
       headers: {

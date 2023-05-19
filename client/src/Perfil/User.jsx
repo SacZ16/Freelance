@@ -40,7 +40,7 @@ console.log("usuario.favoritos",usuario.favoritos)
             <span className="letra-perfil" style={{color:'black'}}>{usuario.email}</span>
           </span>
         </div>
-        <div style={{ display: "flex", gap: "3rem",display:'flex',flexWrap:'wrap' }}>
+        <div style={{ display: "flex", gap: "3rem",flexWrap:'wrap' }}>
           <button onClick={() => setShow("compras")} className="letra-perfil">Compras</button>
           <button onClick={() => setShow("favoritos")} className="letra-perfil">Favoritos</button>
         </div>

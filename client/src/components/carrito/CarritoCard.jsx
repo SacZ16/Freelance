@@ -8,7 +8,7 @@ export default function CarritoCard({ setEstadoCarrito, usuario, actualizar, set
 
 
   const removeFromCart = (id, idU,) => {
-    fetch("http://localhost:4000/cart/remove", {
+    fetch("https://free-q3yd.vercel.app/cart/remove", {
       method: "PUT",
       body: JSON.stringify({
         idProduct : id,

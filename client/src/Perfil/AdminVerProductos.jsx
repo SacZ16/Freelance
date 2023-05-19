@@ -29,15 +29,15 @@ export default function AdminVerProductos() {
   };
 
   const deleteProduct = (id) => {
-    fetch("http://localhost:4000/product/delete/" + id, optionDelete).then(r => {if ( r.status === 200){
-      swal("Exito", "Producto eliminado satisfactoriamente", "success");fetch("http://localhost:4000/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))} else swal("Error", "Ha ocurrido un error inesperado", "error")
+    fetch("https://free-q3yd.vercel.app/product/delete/" + id, optionDelete).then(r => {if ( r.status === 200){
+      swal("Exito", "Producto eliminado satisfactoriamente", "success");fetch("https://free-q3yd.vercel.app/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))} else swal("Error", "Ha ocurrido un error inesperado", "error")
     })
   }
 
   const [AllProducts, setAllProducts] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:4000/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))
+    fetch("https://free-q3yd.vercel.app/products", optionGet).then(r => r.json()).then(e=> setAllProducts(e))
   }, [])
 
 

@@ -19,7 +19,7 @@ export default function AdminSubirProducto() {
       };
 
     useEffect(() => {
-        fetch("http://localhost:4000/categories", optionGet).then(r => r.json()).then(e=> setCategories(e))
+        fetch("https://free-q3yd.vercel.app/categories", optionGet).then(r => r.json()).then(e=> setCategories(e))
     }, [])
     const [productocaracteristicas, setProductocaracteristicas] = useState({
             tipo:"",
@@ -62,7 +62,7 @@ export default function AdminSubirProducto() {
         ) return swal("Advertencia",
         "Por favor completa todos los campos",
         "warning")
-      fetch("http://localhost:4000/product/add", {
+      fetch("https://free-q3yd.vercel.app/product/add", {
       method: "POST",
       body: JSON.stringify(listoproducto),
       headers: {

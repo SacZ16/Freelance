@@ -17,7 +17,7 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
     if(usuario==="login"){
       return swal("Error", "Debes iniciar sesión para agregar "+titulo+" a favoritos", "warning")
     }
-    fetch("http://localhost:4000/fav/add", {
+    fetch("https://free-q3yd.vercel.app/fav/add", {
       method: "POST",
       body: JSON.stringify({
         idProduct : id,
@@ -32,7 +32,7 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
   }
 
   const removeFav = (id, idU) => {
-    fetch("http://localhost:4000/fav/remove", {
+    fetch("https://free-q3yd.vercel.app/fav/remove", {
       method: "PUT",
       body: JSON.stringify({
         idProduct : id,
@@ -50,7 +50,7 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
     if(usuario==="login"){
       return swal("Error", "Debes iniciar sesión para agregar "+titulo+" al carrito", "warning")
     }
-    fetch("http://localhost:4000/cart/add", {
+    fetch("https://free-q3yd.vercel.app/cart/add", {
       method: "POST",
       body: JSON.stringify({
         idProduct : id,
@@ -65,7 +65,7 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
   }
 
   const removeFromCart = (id, idU) => {
-    fetch("http://localhost:4000/cart/remove", {
+    fetch("https://free-q3yd.vercel.app/cart/remove", {
       method: "PUT",
       body: JSON.stringify({
         idProduct : id,
@@ -83,7 +83,7 @@ export default function Card({ imagen, unidades, titulo, precio, valorUnidad, ca
    const { decodedToken } = useJwt(localStorage.getItem("Upmn")); */
 
   // useEffect(() => {
-  //   if(decodedToken)fetch("http://localhost:4000/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
+  //   if(decodedToken)fetch("https://free-q3yd.vercel.app/user/"+decodedToken._id,optionGet).then(r=>r.json()).then(c=>setUsuario(c))
   // }, [decodedToken])
   
 // console.log("favo",usuarioJWTFAV,titulo)

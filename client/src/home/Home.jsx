@@ -25,7 +25,7 @@ export default function Home({usuarioJWT,setActualizar,actualizar}) {
   useEffect(() => {
     if (home?.elegidos?.nombre)
       fetch(
-        "http://localhost:4000/products/filter/" + home.elegidos.nombre,
+        "https://free-q3yd.vercel.app/products/filter/" + home.elegidos.nombre,
         optionGet
       )
         .then(async(r) =>{
@@ -37,7 +37,7 @@ export default function Home({usuarioJWT,setActualizar,actualizar}) {
         })
   }, [home]);
   useEffect(() => {
-    fetch("http://localhost:4000/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log(e)})
+    fetch("https://free-q3yd.vercel.app/home", optionGet).then(r => r.json()).then(e=> {setHome(e[0]);console.log(e)})
   }, [])
 
   console.log("home.destacados",home.destacados)

@@ -22,7 +22,7 @@ export default function Navbar({usuario, actualizar, setActualizar}) {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4000/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
+    fetch("https://free-q3yd.vercel.app/categories",optionGet).then(r=>r.json()).then(c=>setCategorias(c))
   }, [])
   
   return (

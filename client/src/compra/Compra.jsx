@@ -14,7 +14,7 @@ const [initializationstatus, setinitializationstatus] = useState({paymentId:"131
 const onSubmit = async (formData) => {
  // callback llamado al hacer clic en el botón enviar datos
  return new Promise((resolve, reject) => {
-   fetch('http://localhost:4000/process_payment', {
+   fetch('https://free-q3yd.vercel.app/process_payment', {
      method: 'POST',
      headers: {
        'Content-Type': 'application/json',

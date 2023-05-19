@@ -38,7 +38,7 @@ const [actualizardetail, setActualizardetail] = useState(false)
       top: 0,
       behavior: "smooth",
     });
-    fetch("http://localhost:4000/product/" + id, optionGet).then(async (r) => {
+    fetch("https://free-q3yd.vercel.app/product/" + id, optionGet).then(async (r) => {
       console.log(r.status);
       if (r.status !== 200) {
         return alert("ese producto no existe");
@@ -51,7 +51,7 @@ const [actualizardetail, setActualizardetail] = useState(false)
   }, [actualizardetail]);
 
   const getRandomProducts = () => {
-    fetch("http://localhost:4000/products/random", optionGet).then(r => r.json()).then(r => setRandom(r))
+    fetch("https://free-q3yd.vercel.app/products/random", optionGet).then(r => r.json()).then(r => setRandom(r))
   }
 
   const addFav = (id, idU) => {
@@ -62,7 +62,7 @@ const [actualizardetail, setActualizardetail] = useState(false)
         "warning"
       );
     }
-    fetch("http://localhost:4000/fav/add", {
+    fetch("https://free-q3yd.vercel.app/fav/add", {
       method: "POST",
       body: JSON.stringify({
         idProduct: id,
@@ -84,7 +84,7 @@ const [actualizardetail, setActualizardetail] = useState(false)
   };
 
   const removeFav = (id, idU) => {
-    fetch("http://localhost:4000/fav/remove", {
+    fetch("https://free-q3yd.vercel.app/fav/remove", {
       method: "PUT",
       body: JSON.stringify({
         idProduct: id,
