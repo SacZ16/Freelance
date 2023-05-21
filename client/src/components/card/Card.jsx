@@ -119,7 +119,7 @@ console.log({categoria})
           />}
         </section>
         <Link to={`/detalle/${id}`} className="img-card">
-          <img  width="326" height="326" src={imagen} alt="not found"/>  
+          <img  width="326" height="326" src={imagen.split(".",3).join(".").replace("upload/","upload/q_55/")+".avif"} alt="not found"/>  
         </Link>
       </section>
       <Link to={`/detalle/${id}`} className="container-section2-card">

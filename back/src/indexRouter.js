@@ -19,6 +19,7 @@ const { getCategories, postCategory, updateCategory, deleteCategory } = require(
 const { addProductToFav, removeFromFav } = require("./Controllers/favControllers");
 const { registerUser, loginUser, getUsers, getUser } = require("./Controllers/userControllers");
 const { getHome, updateSlice, updatePosters, updateElegidos, updateDestacados, postHome } = require("./Controllers/homeControllers");
+const { getCompras, getCompra } = require("./Controllers/comprasControllers");
 router.get("/", function (req, res, next) {
   return res.json({
     "/payment": "generates a payment link",
@@ -34,6 +35,9 @@ router.get("/users", getUsers)
 router.get("/user/:id", getUser)
 router.post("/user/register", registerUser)
 router.post("/user/login", loginUser)
+
+router.get("/compras", getCompras)
+router.get("/compra/:id", getCompra)
 
 router.post("/fav/add", addProductToFav)
 router.put("/fav/remove", removeFromFav)

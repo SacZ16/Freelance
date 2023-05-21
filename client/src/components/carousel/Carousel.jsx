@@ -17,7 +17,7 @@ export default function Carousel({width,height,fix,array}) {
             array.map((image,i)=>{
                 return(
                     <div className="container2-carousel" style={{width:width,height:height,left:`${indexCarousel+i}00%`}}>
-                        <img style={{objectFit:`${fix?'cover':'contain'}`,width:width,height:height}} src={image} alt="image"/>
+                        <img style={{objectFit:`${fix?'cover':'contain'}`,width:width,height:height}} src={image.split(".",3).join(".").replace("upload/","upload/q_55/")+".avif"} alt="image"/>
                     </div>
                 )
             })
