@@ -98,6 +98,13 @@ router.post("/process_payment",function(req,res){
               return tresLetras
             }
       letras()
+// transaction_details.installment_amount = cantidad monto cuotas
+// transaction_details.net_received_amount = neto si n impuesto pero sacado lo de mp
+// transaction_details.total_paid_amount = total con impuesto de las cuotas
+// transaction_amount = total sin impuesto de nada
+// installments == numero de cuotas
+// currency_id = "ars"
+// status = aprovado
       const newCompras = new Compras({
         pedido:(`${JSON.stringify(new Date()).slice(6,8)}${letras()}${JSON.stringify(new Date()).slice(9,11)}`),
         productos:productos,

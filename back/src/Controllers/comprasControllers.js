@@ -15,7 +15,7 @@ const getCompra = async (req, res) => {
     const { id } = req.params;
   
     try {
-      const compraDetail = await Compras.findById(id);
+      const compraDetail = await Compras.findById(id).populate("comprador");
       return res.status(200).json(compraDetail);
     } catch (e) {
       return res.status(404).json({ msg: `Error 404 - ${e}` });

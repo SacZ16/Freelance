@@ -79,7 +79,7 @@ const prevStock=(estock,index,eprecio)=>{
                         currency: "ARS",
                         style: "currency",
                       })}
-        <button onClick={()=>setPagar(true)}>Endeudarse</button>
+        <button onClick={()=>setPagar(true)}>Completar compra</button>
         {pagar&&<Mp usuario={usuario} productos={carritoAComprar} amount={carritoAComprar?.map(e=>(Number((e.precio+"").replace('.', '')))).reduce((a, b) => a + b, 0)}></Mp>}
     </div>
   )

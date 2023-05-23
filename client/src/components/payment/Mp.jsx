@@ -9,12 +9,12 @@ export default function Mp({amount,productos,usuario}) {
 const initialization = {
  amount: amount,
 };
-const [initializationstatus, setinitializationstatus] = useState({paymentId:"1314601233"})
+// const [initializationstatus, setinitializationstatus] = useState({paymentId:"1314601233"})
 
 const onSubmit = async (formData) => {
  // callback llamado al hacer clic en el botón enviar datos
  return new Promise((resolve, reject) => {
-   fetch('https://free-q3yd.vercel.app/process_payment', {
+   fetch('https://free-erbiloda.vercel.app/process_payment', {
      method: 'POST',
      headers: {
        'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const onSubmit = async (formData) => {
      .then((response) => {
        // recibir el resultado del pago
        console.log({"pagado":response})
-       setinitializationstatus({paymentId:response.id})
+      //  setinitializationstatus({paymentId:response.id})
        resolve();
      })
      .catch((error) => {
