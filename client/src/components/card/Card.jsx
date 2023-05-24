@@ -95,25 +95,25 @@ console.log({categoria})
         <section className="container-section1-icons-card">
           {!usuarioJWTFAV &&<img
           onClick={() => {addFav(id, usuario._id)}}
-            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
+            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
             src={heart2}
             alt="heart"
           />}
            {usuarioJWTFAV&& <img
           onClick={() => removeFav(id, usuario._id)}
-            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
+            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
             src= {heart}
             alt="heart"
           />}
           {!usuarioJWTCAR&&<img
             onClick={() => {addtoCart(id, usuario._id)}}
-            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
+            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
             src={carrito}
             alt="carrito"
           />}
            {usuarioJWTCAR&&<img
             onClick={() => removeFromCart(id, usuario._id)}
-            style={{ position: "relative", zIndex: 10000,cursor:'pointer' }}
+            style={{ position: "relative", zIndex: 100,cursor:'pointer' }}
             src={carrito2}
             alt="carrito"
           />}
